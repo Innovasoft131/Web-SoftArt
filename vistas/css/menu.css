@@ -1,0 +1,278 @@
+.header{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 9%;
+    background: #fff;
+    box-shadow: var(--sombra);
+}
+
+.header .logo{
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: var(--negro);
+}
+
+.header .logo .imgLogo{
+    color: var(--naranja);
+}
+
+.header .nav a{
+    font-size: 1.7rem;
+    margin: 0.5rem;
+    color: var(--negro);
+}
+
+.header .nav a:hover{
+    color: var(--naranja);
+}
+
+
+.header .iconos_menu .subIcono{
+    height: 4.5rem;
+    width: 4.5rem;
+    line-height: 4.5rem;
+    border-radius: .5rem;
+   /* background: #eee; */
+    color: var(--negro);
+    font-size: 2rem;
+    margin-right: .3rem;
+    cursor: pointer;
+    text-align: center ;       
+}
+
+.header .iconos_menu .subIcono:hover{
+    background: var(--naranja);
+    color: #fff;
+}
+
+.subIcono{
+    float:left;
+}
+
+.subIcono .aLogin{
+    text-decoration: none;
+}
+
+#btnMenu{
+    display: none;
+}
+
+.header .formBuscar{
+    position: absolute;
+    top: 110%;
+    right: -110%;
+    width: 50rem;
+    height: 5rem;
+    background: #fff;
+    border-radius: .5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--sombra);
+}
+
+.header .formBuscar.activar{
+    right: 2rem;
+    transition: .4s linear;
+}
+.header .formBuscar input{
+    height: 100%;
+    width: 100%;
+    background: none;
+    text-transform: none;
+    font-size: 1.6rem;
+    color: var(--negro);
+    padding: 0 1.5rem;
+}
+
+.header .formBuscar .lbtxtBuscar{
+    font-size: 3.2rem;
+    padding-right: 1.5rem;
+    color: var(--negro);
+    cursor: pointer;
+}
+
+.header .formBuscar .lbtxtBuscar:hover{
+    color: var(--naranja);
+}
+
+.header .carrito{
+    position: absolute;
+    top: 110%;
+    right: -110%;
+    padding: 1rem;
+    border-radius: .5rem;
+    box-shadow: var(--sombra);
+    width: 35rem;
+    overflow-x: hidden;
+    overflow-y: scroll; 
+    background: #fff;
+    
+}
+
+.header .carrito.activar{
+    right: 2rem;
+    transition: .4s linear;
+}
+
+.header .carrito .cajaCarrito{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    margin: 1rem 0;
+}
+
+.header .carrito .cajaCarrito img{
+    height: 10rem;
+}
+
+.header .carrito .cajaCarrito .fa-trash{
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    cursor: pointer;
+    color: var(--gris);
+    transform: translateY(-50%);
+}
+
+.header .carrito .cajaCarrito .fa-trash:hover{
+    color: var(--naranja);
+}
+
+.header .carrito .cajaCarrito .contenido h3{
+    color: var(--negro);
+    font-size: 1.7rem;
+    padding-bottom: 1rem;
+}
+
+.header .carrito .cajaCarrito .contenido span{
+    color: var(--gris);
+    font-size: 1.6rem;
+}
+
+.header .carrito .cajaCarrito .contenido .precioCarrito{
+    padding-left: 1rem;
+}
+
+.header .carrito .total{
+    font-size: 2.5rem;
+    padding: 1rem 0;
+    text-align: center;
+    color: var(--negro);
+}
+
+.header .carrito .btn{
+    display: block;
+    text-align: center;
+    margin: 1rem;
+}
+
+
+.header .login-form{
+    position: absolute;
+    top: 110%;
+    right: -110%;
+    width: 30rem;
+    box-shadow: var(--sombra);
+    padding: 2rem;
+    border-radius: .5rem;
+    background: #fff;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: scroll; 
+}
+
+.header .login-form.activar{
+    right: 2rem;
+    transition: .4s linear;
+}
+
+.header .login-form h3{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: var(--negro);
+}
+
+.header .login-form .cajaLogin{
+    width: 100%;
+    margin: .7rem 0;
+    background: #eee;
+    border-radius: .5rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: var(--negro);
+    text-transform: none;
+}
+
+.header .login-form p{
+    font-size: 1.4rem;
+    padding: .5rem 0;
+    color: var(--gris);
+}
+
+.header .login-form a{
+    color: var(--naranja);
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* media queries */
+
+@media (max-width:991px){
+    .header{
+        padding: 2rem;
+    }
+}
+
+@media (max-width:768px){
+    #btnMenu{
+        display: inline-block;
+    }
+    .header .nav{
+        position: absolute;
+        top: 110%;
+        right: -110%;
+        width: 30rem;
+        box-shadow: var(--sombra);
+        border-radius: .5rem;
+        background: #fff;
+    }
+
+    .header .nav.activar{
+        right: 2rem;
+        transition: .4s linear;
+    }
+
+    .header .nav a{
+        font-size: 2rem;
+        margin: 2rem 2.5rem;
+        display: block;
+    }
+
+    .header .formBuscar{
+        width: 90%;
+    }
+}

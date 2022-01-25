@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Italianno&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Poppins:wght@100;300;400;500;600&family=Ubuntu:wght@300;400&display=swap');
+
+:root{
+    --naranja: #ff7800;
+    --negro: #130f40;
+    --gris: #666;
+    --sombra: 0 .5rem 1.5rem rgba(0,0,0,.1);
+    --borde: .2rem solid rgba(0,0,0,.1);
+    --linea: .1rem solid rgba(0,0,0,.1);
+    --linea-hover: .2rem solid var(--negro);
+}
+
+*{
+    /*
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Italianno', cursive;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    */
+    font-family: 'Poppins', sans-serif; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding: 7rem;
+}
+
+body{
+    background: #eee;
+}
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .8rem 3rem;
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    border: .2rem solid var(--negro);
+    color: var(--negro);
+    cursor: pointer;
+    background: none;
+}
+
+.btn:hover{
+    background: var(--naranja);
+    color: #fff;
+    border: none;
+}
+
+/* media queries */
+
+@media (max-width:991px){
+    html{
+        font-size: 55%;
+        
+    }
+}
+
+@media (max-width:450px){
+    html{
+        font-size: 50%;
+        
+    }
+}
