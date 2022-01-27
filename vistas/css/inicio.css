@@ -6,8 +6,8 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
-    /* poner dinamico con bd  inicio se seccion*/
-    background: url(../img/plantilla/10.jpg) no-repeat;
+    /* poner dinamico con bd  inicio se seccion
+    background: url(../img/plantilla/10.jpg) no-repeat; */
     /* fin se seccion*/
     background-position: center;
     background-size: cover;
@@ -22,19 +22,25 @@ section{
     text-align: center;
     width: 60rem;
 }
-/* poner dinamico con bd solo colores inicio se seccion*/
+/* poner dinamico con bd solo colores inicio se seccion
 .inicio .contenido h3{
     color: var(--negro);
     font-size: 3rem;
 }
 
+*/
+/*
 .inicio .contenido h3 span{
     color: var(--naranja);
 }
 
+*/
+
 .inicio .contenido p{
+    /*
     color: var(--linea);
     font-size: 1.7rem;
+    */
     padding: 1rem 0;
     line-height: 1.8;
 }

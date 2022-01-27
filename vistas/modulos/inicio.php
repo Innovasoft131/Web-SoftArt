@@ -1,10 +1,20 @@
+<?php
+
+$rutaWeb =  Ruta::ctrRutaWeb();
+$rutaAdmin =  Ruta::ctrRutaAdmin();
+
+$item = null;
+$valor = null;
+$configuracion_inicio = ControladorConfiguracion::ctrConfiguracionInicio($item, $valor);
+
+
+?>
 <!-- inicio de la seccion home -->
 <section class="inicio" id="inicio">
     <div class="contenido">
-        <h3>Diseños  <span>profesionales</span> el producto para ti </h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis sint sit 
-            aliquam vitae error debitis quia laborum saepe consequuntur ea nemo
-            quasi consequatur vero iste nulla minus, voluptates odio nam!
+        <h3><span><?php echo $configuracion_inicio[0]["slogan"]; ?></span> </h3>
+        <p>
+            <?php echo $configuracion_inicio[0]["parrafoSlogan"]; ?>
         </p>
         <a href="#productos" class="btn">Comprar ahora</a>
     </div>

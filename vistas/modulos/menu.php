@@ -1,6 +1,13 @@
+<?php
+$item = null;
+$valor = null;
+$configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($item, $valor);
+$rutaWeb =  Ruta::ctrRutaWeb();
+$rutaAdmin =  Ruta::ctrRutaAdmin();
+?>
 <!-- inicio del header -->
 <header class="header">
-    <a href="#" class="logo"><i class="fas fa-store imgLogo"></i>SoftArt </a>
+    <a href="#" class="logo"> <img src="<?php echo $rutaAdmin.$configuracion_ecommerce[0]["logo"]; ?>" alt="" class="imgLogo"><?php echo $configuracion_ecommerce[0]["nombreTienda"]; ?> </a>
 
     <nav class="nav">
         <a href="#inicio">Inicio</a>
@@ -20,8 +27,8 @@
             <i class="fas fa-shopping-cart"></i>
         </div>
         <!-- id="btnLogin" -->
-        <div class="subIcono" >
-            <a href="login" class="aLogin"> <i class="fas fa-user"></i></a>
+        <div class="subIcono btnLoginI" >
+             <i class="fas fa-user"></i>
             
         </div>
     </div>

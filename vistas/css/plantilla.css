@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Italianno&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Poppins:wght@100;300;400;500;600&family=Ubuntu:wght@300;400&display=swap');
 
 :root{
+    /*
     --naranja: #ff7800;
-    --negro: #130f40;
+    --negro: #130f40; */
     --gris: #666;
     --sombra: 0 .5rem 1.5rem rgba(0,0,0,.1);
     --borde: .2rem solid rgba(0,0,0,.1);

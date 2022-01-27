@@ -20,7 +20,7 @@ document.querySelector("#btnCarrito").onclick = () => {
 
 
 let login = document.querySelector(".login-form");
-
+/*
 document.querySelector("#btnLogin").onclick = () => {
     login.classList.toggle('activar');
     carrito.classList.remove('activar');
@@ -28,7 +28,7 @@ document.querySelector("#btnLogin").onclick = () => {
     menu.classList.remove('activar');   
     
 };
-
+*/
 
 let menu = document.querySelector(".nav");
 
@@ -48,4 +48,6 @@ window.onscroll = () => {
 };
 
 
-
+$(document).on("click", ".btnLoginI", function(){
+    window.location = "login";
+});

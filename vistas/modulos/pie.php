@@ -1,3 +1,10 @@
+<?php
+$rutaWeb =  Ruta::ctrRutaWeb();
+$rutaAdmin =  Ruta::ctrRutaAdmin();
+$item = null;
+$valor = null;
+$configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($item, $valor);
+?>
 <div class="pie">
   <div class="container">
     <div class="row">
@@ -6,7 +13,7 @@
         <p>Descarga nuestra app para android y ios</p>
       </div -->
       <div class="pie-col-2">
-        <img src="vistas/img/plantilla/logo.png" alt="">
+        <img src="<?php echo $rutaAdmin.$configuracion_ecommerce[0]["logoPie"]; ?>" alt="">
         <p>Nuestro propósito es hacer que el placer y los beneficios del diseño grafico sean accesibles de manera sostenible para muchos.</p>
       </div>
       <div class="pie-col-3">
