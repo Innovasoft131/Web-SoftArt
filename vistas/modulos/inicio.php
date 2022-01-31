@@ -647,102 +647,67 @@ $configuracion_inicio = ControladorConfiguracion::ctrConfiguracionInicio($item, 
 <!-- fin de paginación -->
 
 <!-- inicio de la seccion de testimonios  -->
-<!-- 
+
 <section class="ofertas"  id="testimonios">
     <h1 class="titulo">  <span>Testimonios</span> </h1>
 </section>
 <div class="contenedor-testimonios swiper mySwiper">
     <div class="swiper-wrapper">
-        -->
+
         <!-- inicio de las cards de testimonios -->
-        <!--
+        <?php
+        $item = null;
+        $valor = null;
+        
+        $testimonios = ControladorTestimonios::ctrMostrarTestimonios($item, $valor);
+        foreach ($testimonios as $key => $value):
+            if ($value["estado"] == 1):
+        ?>
         <div class="slide-contenedor swiper-slide">
             <div class="slide">
             <i class="fas fa-quote-right icono"></i>
             <div class="usuarios">
-                <img src="vistas/img/plantilla/user-1.png" alt="">
+                <img src="<?php echo $rutaAdmin.$value["foto"]; ?>" alt="">
                 <div class="usuario-info">
-                    <h3>Juana</h3>
+                    <h3><?php echo $value["nombreCliente"]; ?></h3>
                     <div class="estrellas">
+                        <?php $cantidadEstrellas = $value["calificacion"]; ?>
+                        <?php for ($i=0; $i < $cantidadEstrellas ; $i++): ?>
                         <i class="fas fa-star tesEstrella"></i>
-                        <i class="fas fa-star tesEstrella"></i>
-                        <i class="fas fa-star tesEstrella"></i>
-                        <i class="fas fa-star tesEstrella"></i>
-                        <i class="fas fa-star tesEstrella gris"></i>
+                        
+                        <?php endfor; ?>
+                        <?php if ($cantidadEstrellas < 5):?>
+                            <?php 
+                                $cantidadEstrellasGris = 5 - $cantidadEstrellas;  
+                                for ($i=0; $i < $cantidadEstrellasGris ; $i++):
+                            ?>
+                                <i class="fas fa-star tesEstrella gris"></i>
+                            <?php endfor; ?>
+                            <?php endif; ?>
                     </div>
                 </div>
             </div>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe esse recusandae fugit 
-                accusantium placeat 
-                beatae voluptatibus! Atque esse beatae quas doloremque dignissimos veniam! 
-                Excepturi consequuntur, sunt veritatis asperiores recusandae id.</p>
+            <p class="text">
+                <?php echo $value["testimonio"]; ?>
+            </p>
             </div>
 
         </div>
-        -->
+        <?php  endif; ?>
+        <?php  endforeach; ?>
         <!-- fin de las cards de testimonios -->
-        <!-- inicio de las cards de testimonios -->
-        <!--
-        <div class="slide-contenedor swiper-slide">
-            <div class="slide">
-            <i class="fas fa-quote-right icono"></i>
-            <div class="usuarios">
-                <img src="vistas/img/plantilla/user-2.png" alt="">
-                <div class="usuario-info">
-                    <h3>Angel</h3>
-                    <div class="estrellas">
-                        <i class="fas fa-star tesEstrella"></i>
-                        <i class="fas fa-star tesEstrella"></i>
-                        <i class="fas fa-star tesEstrella"></i>
-                        <i class="fas fa-star tesEstrella"></i>
-                        <i class="fas fa-star tesEstrella"></i>
-                    </div>
-                </div>
-            </div>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe esse recusandae fugit 
-                accusantium placeat 
-                beatae voluptatibus! Atque esse beatae quas doloremque dignissimos veniam! 
-                Excepturi consequuntur, sunt veritatis asperiores recusandae id.</p>
-            </div>
 
-        </div>
-        -->
-        <!-- fin de las cards de testimonios -->
-        <!-- inicio de las cards de testimonios -->
-        <!--
-        <div class="slide-contenedor swiper-slide">
-            <div class="slide">
-            <i class="fas fa-quote-right icono"></i>
-            <div class="usuarios">
-                <img src="vistas/img/plantilla/user-3.png" alt="">
-                <div class="usuario-info">
-                    <h3>jackeline</h3>
-                    <div class="estrellas">
-                        <i class="fas fa-star tesEstrella"></i>
-                        <i class="fas fa-star tesEstrella"></i>
-                        <i class="fas fa-star tesEstrella"></i>
-                        <i class="fas fa-star tesEstrella gris"></i>
-                        <i class="fas fa-star tesEstrella gris"></i>
-                    </div>
-                </div>
-            </div>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe esse recusandae fugit 
-                accusantium placeat 
-                beatae voluptatibus! Atque esse beatae quas doloremque dignissimos veniam! 
-                Excepturi consequuntur, sunt veritatis asperiores recusandae id.</p>
-            </div>
 
-        </div>
-        -->
-        <!-- fin de las cards de testimonios -->
-        <!--
+     
+
+   
         
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
 
 </div>
--->
+
 <!-- fin de la seccion de testimonios  -->
 
 <!-- fin de los productos -->
@@ -754,63 +719,29 @@ $configuracion_inicio = ControladorConfiguracion::ctrConfiguracionInicio($item, 
 <section class="seccion_preguntas">
     <div class="contenedor-preguntas">
         <div class="acordeon">
-            <div class="acordeon-item" id="pregunta1">
-                <a class="acordeon-link" href="#pregunta1">
-                    ¿Donde puedo pagar?
+            <?php
+                $item = null;
+                $valor = null;
+                
+                $pregunta = ControladorPreguntas::ctrMostrarPreguntas($item, $valor);
+                foreach ($pregunta as $key => $value):
+            ?>
+            <div class="acordeon-item" id="pregunta<?php echo $value["id"]; ?>">
+                <a class="acordeon-link" href="#pregunta<?php echo $value["id"]; ?>">
+                    <?php echo $value["pregunta"]; ?>
                     <i class="fas fa-plus icon-preguntas"></i>
                     <i class="fas fa-minus icon-preguntas"></i>
                 </a>
                 <div class="respuesta">
                     <p class="respuesta-parrafo">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    A fuga velit natus, corporis reprehenderit ipsum ducimus autem aliquam quidem quibusdam! 
-                    Magni officiis voluptatem optio pariatur cumque error suscipit ratione sed.
+                        <?php echo $value["respuesta"]; ?>
                     </p>
                    
                 </div>
             </div>
-            <div class="acordeon-item" id="pregunta2">
-                <a class="acordeon-link" href="#pregunta2">
-                    ¿Cómo cancelar?
-                    <i class="fas fa-plus icon-preguntas"></i>
-                    <i class="fas fa-minus icon-preguntas"></i>
-                </a>
-                <div class="respuesta">
-                    <p class="respuesta-parrafo">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        A fuga velit natus, corporis reprehenderit ipsum ducimus autem aliquam quidem quibusdam! 
-                        Magni officiis voluptatem optio pariatur cumque error suscipit ratione sed.
-                    </p>
-                </div>
-            </div>
-            <div class="acordeon-item" id="pregunta3">
-                <a class="acordeon-link" href="#pregunta3">
-                    ¿Cuándo entregan los diseños?
-                    <i class="fas fa-plus icon-preguntas"></i>
-                    <i class="fas fa-minus icon-preguntas"></i>
-                </a>
-                <div class="respuesta">
-                    <p class="respuesta-parrafo">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        A fuga velit natus, corporis reprehenderit ipsum ducimus autem aliquam quidem quibusdam! 
-                        Magni officiis voluptatem optio pariatur cumque error suscipit ratione sed.
-                    </p>
-                </div>
-            </div>
-            <div class="acordeon-item" id="pregunta4">
-                <a class="acordeon-link" href="#pregunta4">
-                    Horarios de atención  
-                    <i class="fas fa-plus icon-preguntas"></i>
-                    <i class="fas fa-minus icon-preguntas"></i>
-                </a>
-                <div class="respuesta">
-                    <p class="respuesta-parrafo">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        A fuga velit natus, corporis reprehenderit ipsum ducimus autem aliquam quidem quibusdam! 
-                        Magni officiis voluptatem optio pariatur cumque error suscipit ratione sed.
-                    </p>
-                </div>
-            </div>
+            <?php endforeach; ?>
+
+          
         </div>        
     </div>
 </section>

@@ -469,7 +469,7 @@ section{
 /* fin de paginación */
 
 /* inicio de la seccion de testimonios  */
-/*
+
 .contenedor-testimonios{
     position: relative;
     perspective: 1000px;
@@ -545,7 +545,7 @@ section{
 .swiper-button-prev{
     color: var(--naranja);
 }
-*/
+
 /* fin de la seccion de testimonios  */
 @media (max-width:991px){
     section{
@@ -557,12 +557,12 @@ section{
     .titulo{
         font-size: 2.5rem;
     }
-    /*
+   
     .contenedor-testimonios .slide-contenedor .slide .icono{
         font-size: 40px;
 
     }
-    */
+  
 }
 
 /* inicio de la seccion de preguntas  */
