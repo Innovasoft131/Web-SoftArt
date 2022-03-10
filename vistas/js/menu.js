@@ -49,5 +49,6 @@ window.onscroll = () => {
 
 
 $(document).on("click", ".btnLoginI", function(){
-    window.location = "login";
+    const ruta = document.getElementById('rutaOculta').value;
+    window.location = ruta+"login";
 });

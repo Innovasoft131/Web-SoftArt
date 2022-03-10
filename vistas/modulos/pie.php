@@ -5,7 +5,7 @@ $item = null;
 $valor = null;
 $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($item, $valor);
 ?>
-<div class="pie">
+<div class="pie mostrar">
   <div class="container">
     <div class="row">
       <!--div class="pie-col-1">

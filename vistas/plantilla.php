@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
 // mantener la ruta fija de la ecommerce
 $rutaWeb =  Ruta::ctrRutaWeb();
 $rutaAdmin =  Ruta::ctrRutaAdmin();
@@ -9,24 +10,27 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SoftArt</title>
-    <link rel="icon" href="<?php echo $rutaAdmin.$configuracion_ecommerce[0]["logoIcon"]; ?>">
+    <link rel="icon" href="<?php echo $rutaAdmin . $configuracion_ecommerce[0]["logoIcon"]; ?>">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/dist/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/dist/owlCarousel/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/dist/owlCarousel/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/dist/swiper-bundle/css/swiper-bundle.min.css">
-    
+
 
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/plantilla.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/menu.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/inicio.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/pie.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/login.css">
+    <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/productos.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/modulos/configuracion.php">
+    <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/loader.css">
 
 
     <script src="<?php echo $rutaWeb; ?>vistas/dist/jquery/jquery.min.js"></script>
@@ -37,51 +41,88 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
 
 
 </head>
+
 <body>
-    <?php 
-    if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"){
-        
+    <?php
+    include 'modulos/loader.php';
+    /*=============================================
+        CONTENIDO DINÁMICO
+    =============================================*/
+    
+    
+    $rutas = array();
+    $ruta = null;
+    $ruta1 = null;
+ 
+    
+    if(isset($_GET["ruta"]) && $_GET["ruta"] == "login"){
+        include 'modulos/login.php';
+    }elseif (isset($_GET["ruta"])) {
         include 'modulos/menu.php';
-        if(isset($_GET["ruta"])){
-            
-            if($_GET["ruta"]=="inicio"){
+        $rutas = explode("/", $_GET["ruta"]);
+
     
-                
-                include 'modulos/inicio.php'; 
-                include 'modulos/pie.php'; 
-    
+        /*=============================================
+	        URL'S AMIGABLES DE CATEGORÍAS
+	    =============================================*/
+        if (isset($rutas[1])) {
+            $item = "nombre";
+            $valor =  $rutas[1];
+            $rutaCategorias = ControladorCategorias::ctrMostrarCategoria($item, $valor);
+            if ($rutas[0] == $rutaCategorias["nombre"]) {
+
+                $ruta = $rutas[0];
             }
-        }else{
-            include "modulos/inicio.php";
         }
-    }else{
-        if(isset($_GET["ruta"])){
-            
-            if($_GET["ruta"]=="login"){
-    
-                
-                include "modulos/".$_GET["ruta"].".php";
-    
-            }else{
-                    include "modulos/menu.php";
-                    include "modulos/".$_GET["ruta"].".php";
-                    include "modulos/pie.php"; 
+        /*=============================================
+	        URL'S AMIGABLES DE SUBCATEGORÍAS
+	    =============================================*/
+        if (isset($rutas[0])) {
+
+            $item = "nombre";
+            $valor =  $rutas[0];
+            $rutaSubCategorias = ControladorCategorias::ctrMostrarSubCategorias($item, $valor);
+            foreach ($rutaSubCategorias as $key => $value) {
+
+                if ($rutas[0] == $value["ruta"]) {
+
+                    $ruta1 = $rutas[0];
+                }
             }
-        }else{
-            include "modulos/menu.php";
-            include 'modulos/inicio.php'; 
-            include "modulos/pie.php"; 
         }
-      
+
+        /*=============================================
+	    LISTA BLANCA DE URL'S AMIGABLES
+	    =============================================*/
+
+        if ($ruta1 != null || $rutas[0] == "productos") {
+            include "modulos/productos.php";
+        } elseif ($rutas[0] == "buscador" || $rutas[0] == "verificar" || $rutas[0] == "salir" || $rutas[0] == "perfil" || $rutas[0] == "carrito-de-compras" || $rutas[0] == "error" || $rutas[0] == "finalizar-compra") {
+            include "modulos/" . $rutas[0] . ".php";
+        } elseif ($rutas[0] == "inicio") {
+            include 'modulos/inicio.php';
+        } else {
+        //    include "modulos/error404.php";
+        }
+        include 'modulos/pie.php';
+    }else {
+        include 'modulos/menu.php';
+        include 'modulos/inicio.php';
+        include 'modulos/pie.php';
     }
-        
-        
-        
-    ?>
     
+
+
+
+
+
+    ?>
+    <input type="hidden" value="<?php echo $rutaWeb; ?>" id="rutaOculta">
 
     <script src="<?php echo $rutaWeb; ?>vistas/js/menu.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/inicio.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/login.js"></script>
+    <script src="<?php echo $rutaWeb; ?>vistas/js/loader.js"></script>
 </body>
+
 </html>

@@ -6,15 +6,14 @@ $rutaWeb =  Ruta::ctrRutaWeb();
 $rutaAdmin =  Ruta::ctrRutaAdmin();
 ?>
 <!-- inicio del header -->
-<header class="header">
+<header class="header mostrar">
     <a href="#" class="logo"> <img src="<?php echo $rutaAdmin.$configuracion_ecommerce[0]["logo"]; ?>" alt="" class="imgLogo"><?php echo $configuracion_ecommerce[0]["nombreTienda"]; ?> </a>
 
     <nav class="nav">
-        <a href="#inicio">Inicio</a>
-        <a href="#Servicios">Servicios</a>
-        <a href="#nuevos_productos">Nuevo</a>
-        <a href="#productos">Productos</a>
-        <a href="#preguntas">Preguntas</a>
+        <a href="<?php echo $rutaWeb; ?>inicio">Inicio</a>
+        <a href="<?php echo $rutaWeb; ?>productos">Productos</a>
+        <a href="#cotizaciones">Cotizaciones</a>
+
     </nav>
     <div class="iconos_menu">
         <div class="subIcono" id="btnMenu">

@@ -1,4 +1,4 @@
-<section class="login">
+<section class="login mostrar">
   <div class="contenedor">
       <!-- login -->
         <div class="user singinBx">

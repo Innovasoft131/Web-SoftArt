@@ -166,13 +166,20 @@ section{
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(250px, 0.35fr)); */
     grid-gap: 20px;
 
     padding: 20px;
 }
 
 .contenedor .card{
+   /* 
     width: 100%;
+    height: 394px;
+   */
+    width: 272px;
+    height: 375px;
+    
     background: #fff;
     border-radius: 5px;
     
@@ -285,7 +292,7 @@ section{
 .contenedor .card .content .nombreProducto h3{
     font-size: 18px;
     font-weight: 500;
-    color:  var(--negro) /*#333*/;
+    color:  var(--naranja) /*#333*/;
     margin: 5px 0;
 }
 
@@ -369,7 +376,7 @@ section{
 .contenedor_card .card .content .nombreProducto h3{
     font-size: 18px;
     font-weight: 500;
-    color:  var(--negro) /*#333*/;
+    color:  var(--naranja) /*#333*/;
     margin: 5px 0;
 }
 
@@ -444,7 +451,7 @@ section{
 
 .pagination{
     display: flex;
-    justify-content: right;
+    justify-content: center;
     padding: 20px;
 }
   

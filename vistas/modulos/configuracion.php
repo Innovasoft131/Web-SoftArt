@@ -103,3 +103,4 @@ $tamanioParrafo = $configuracion_inicio[0]["tamanioParrafo"];
     color: <?php echo $colorParrafo; ?>;
     font-size: <?php echo $tamanioParrafo; ?>rem;
 }
+
