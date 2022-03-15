@@ -7,6 +7,7 @@ require_once "controladores/preguntas.controlador.php";
 require_once "controladores/testimonios.controlador.php";
 require_once "controladores/productos.controlador.php";
 require_once "controladores/categorias.controlador.php";
+require_once "controladores/detalleProducto.controlador.php";
 
 // modelos
 require_once 'modelos/productos.modelo.php';
@@ -15,6 +16,7 @@ require_once "modelos/rutas.php";
 require_once "modelos/preguntas.modelo.php";
 require_once "modelos/testimonios.modelo.php";
 require_once "modelos/categorias.modelo.php";
+require_once "modelos/detalleProducto.modelo.php";
 
 
 $plantilla = new ControladorPlantilla();

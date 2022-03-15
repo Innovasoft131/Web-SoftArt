@@ -31,6 +31,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/productos.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/modulos/configuracion.php">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/loader.css">
+    <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/detalleProducto.css">
 
 
     <script src="<?php echo $rutaWeb; ?>vistas/dist/jquery/jquery.min.js"></script>
@@ -97,7 +98,9 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
 
         if ($ruta1 != null || $rutas[0] == "productos") {
             include "modulos/productos.php";
-        } elseif ($rutas[0] == "buscador" || $rutas[0] == "verificar" || $rutas[0] == "salir" || $rutas[0] == "perfil" || $rutas[0] == "carrito-de-compras" || $rutas[0] == "error" || $rutas[0] == "finalizar-compra") {
+        } elseif ($ruta1 != null || $rutas[0] == "detalleProducto") {
+            include "modulos/detalleProducto.php";
+        }  elseif ($rutas[0] == "buscador" || $rutas[0] == "verificar" || $rutas[0] == "salir" || $rutas[0] == "perfil" || $rutas[0] == "carrito-de-compras" || $rutas[0] == "detalleProducto" || $rutas[0] == "error" || $rutas[0] == "finalizar-compra") {
             include "modulos/" . $rutas[0] . ".php";
         } elseif ($rutas[0] == "inicio") {
             include 'modulos/inicio.php';
@@ -119,6 +122,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     ?>
     <input type="hidden" value="<?php echo $rutaWeb; ?>" id="rutaOculta">
 
+    <script src="<?php echo $rutaWeb; ?>vistas/js/detalleProducto.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/menu.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/inicio.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/login.js"></script>
