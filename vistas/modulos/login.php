@@ -10,8 +10,10 @@
                     <input type="password" placeholder="Contraseña" autocomplete="on" name="ingPassword">
                     <input type="submit" value="Entrar">
                     <p class="signup">¿No tienes cuenta? <a href="#" onclick="toggleForm();" >Crear Cuenta</a></p>
-
+                <button id="buttonFacebook">Registro con facebook</button>
+                <button id="buttonGmail">Registro con Gmail</button>
                 </form>
+                
             </div>
         </div>
         <!-- registro -->
