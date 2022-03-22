@@ -55,7 +55,7 @@
     width: 50%;
     height: 100%;
     background: #fff;
-    display: flex;
+   /* display: flex; */
     justify-content: center;
     align-items: center;
     padding: 40px;
@@ -183,7 +183,7 @@ section .contenedor.activar .singinBx .imgBx{
     padding: 10px 24px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    
     font-size: 16px;
     transition-duration: 0.4s;
 }
@@ -197,7 +197,7 @@ section .contenedor.activar .singinBx .imgBx{
     padding: 10px 24px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    
     font-size: 16px;
 }
 #buttonFacebook:hover{
