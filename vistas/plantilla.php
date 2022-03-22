@@ -39,6 +39,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <script src="<?php echo $rutaWeb; ?>vistas/dist/fontawesome/js/fontawesome.min.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/dist/fontawesome/js/solid.min.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/dist/swiper-bundle/js/swiper-bundle.min.js"></script>
+    <script src="<?php echo $rutaWeb; ?>vistas/dist/sweetalert2/sweetalert2.all.js"></script>
 
 
 </head>
