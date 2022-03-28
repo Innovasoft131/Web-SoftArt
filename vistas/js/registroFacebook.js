@@ -1,3 +1,4 @@
+var rutaOculta = $("#rutaOculta").val();
 $("#buttonFacebook").click(function(){
 
 	FB.login(function(response){
@@ -33,38 +34,36 @@ function statusChangeCallback(response){
 }
 
 function testApi(){
-	FB.api('/me?fields=id,name,mail,picture', function(response){
+	FB.api('/me?fields=id,name,email', function(response){
 		console.log(response);
 		if (response.email == null) {
 			Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
-}).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire(
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
-  }
-})
+             icon: 'error',
+             title: 'Oops...',
+             text: 'Se debe proporcionar el correo electronico'
+         })
 		}else{
-			var email = response.mail;
-			console.log(email);
+			var email = response.email;
 			var nombre = response.name;
-			console.log(nombre);
-			var foto = "https://graph.facebook.com/"+response.id+"/picture?type=large";
-			console.log(foto);
+			var idFacebook = response.id;
+			//var foto = "https://graph.facebook.com/"+response.id+"/picture?type=large";
 			var datos = new FormData();
-
+			datos.append("idFacebook", idFacebook);
 			datos.append("email", email);
 			datos.append("nombre", nombre);
-			datos.append("foto", foto);
+			//datos.append("foto", foto);
+
+			$.ajax({
+				url: rutaOculta+"ajax/usuarios.ajax.php",
+				method: "POST",
+				data: datos,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function(respuesta){
+					console.log(respuesta);
+				} 
+			});
 		}
 	})
 }

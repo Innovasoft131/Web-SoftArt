@@ -43,6 +43,3 @@ $(document).on("keyup", "#passwordCliente", function(){
     }
 });
 
-
-
-
