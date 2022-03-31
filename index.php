@@ -20,6 +20,8 @@ require_once "modelos/categorias.modelo.php";
 require_once "modelos/detalleProducto.modelo.php";
 require_once "modelos/usuarios.modelo.php";
 
+require_once "PHPMailer/PHPMailerAutoload.php";
+
 
 $plantilla = new ControladorPlantilla();
 $plantilla -> plantilla();

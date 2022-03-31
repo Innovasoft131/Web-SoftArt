@@ -1,3 +1,37 @@
+
+//formatear los input
+$("input").focus(function(){
+    $(".correoExist").remove();
+})
+//registro de usuario repetido
+var validarCorreoRepetido = false;
+var rutaOculta = $('#rutaOculta').val();
+
+$('#correoCliente').change(function(){
+    var email = $('#correoCliente').val();
+    var datos = new FormData();
+    datos.append("validarEmail", email);
+
+    $.ajax({
+        url: rutaOculta+"ajax/usuarios.ajax.php",
+        method: "post",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(respuesta){
+            console.log("respuesta", respuesta);
+            if (respuesta == "false") {
+                $(".correoExist").remove();
+                validarCorreoRepetido = false;
+            }else{
+                $('#correoCliente').after("<div class='correoExist'>El correo ya existe</div>");
+                validarCorreoRepetido = true;
+            }
+        }
+    })
+});
+
 function registroUsuarios(){
     //validar nombre
      var nombre = $("#nombreCliente").val();
@@ -6,11 +40,7 @@ function registroUsuarios(){
         var expresion = /^[a-zA-ZñÑáéíóú ]*$/;
         console.log(expresion.test(nombre));
         if (!expresion.test(nombre)) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'El nombre no puedo llevar numeros y/o caracteres especiales!'
-              });
+            $('#nombreCliente').after("<div class='correoExist'>Nombre sin numero y/o caracteres alfanumericos</div>");
               return false;
         }
     } else {
@@ -35,6 +65,10 @@ function registroUsuarios(){
              });
              return false;
        }
+       if (validarCorreoRepetido) {
+        $('#correoCliente').after("<div class='correoExist'><h3>El correo ya existe, por favor ingrese otro</h3></div>");
+        return false;
+       }
    } else {
        Swal.fire({
            icon: 'error',
@@ -45,4 +79,5 @@ function registroUsuarios(){
    }
     return true;
 }
+
 

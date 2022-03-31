@@ -237,3 +237,10 @@ section .contenedor.activar .singinBx .imgBx{
     }
 
 }
+
+.correoExist{
+    background: #db4a39;
+    font-size: 11px;
+    text-align: center;
+    color: white;
+}

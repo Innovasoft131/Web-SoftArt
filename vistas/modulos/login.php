@@ -6,11 +6,15 @@
             <div class="formBx">
                 <form method="post">
                     <h2>Iniciar sesión</h2>
-                    <input type="text" placeholder="Usuario" name="ingUsuario">
+                    <input type="text" placeholder="Correo Electronico" name="ingCorreo">
                     <input type="password" placeholder="Contraseña" autocomplete="on" name="ingPassword">
                     <input type="submit" value="Entrar">
-                    <p class="signup">¿No tienes cuenta? <a href="#" onclick="toggleForm();" >Crear Cuenta</a></p>
-                  
+                    <p class="signup">¿No tienes cuenta? <a href="#" onclick="toggleForm();" class="btnIngreso">Crear Cuenta</a></p>
+                   
+                    <?php
+                         $ingreso = new ControladorUsuarios();
+                         $ingreso->ctrIngresoUsuario();
+                    ?>
                 </form>
                 <button id="buttonFacebook">Entrar con facebook</button>
                 <button id="buttonGmail">Entrar con Gmail</button>
