@@ -16,6 +16,10 @@
                          $ingreso->ctrIngresoUsuario();
                     ?>
                 </form>
+                <br>
+                <center>
+                    <a href="olvidoPassword" class="olvidoContrasena">Olvidaste tu contraseña?</a>
+                </center>
                 <button id="buttonFacebook">Entrar con facebook</button>
                 <button id="buttonGmail">Entrar con Gmail</button>
             </div>

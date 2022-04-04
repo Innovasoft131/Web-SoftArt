@@ -36,7 +36,7 @@ $rutaAdmin =  Ruta::ctrRutaAdmin();
         <i class="fas fa-search lbtxtBuscar"></i>
         
     </form>
-
+    
     <div class="carrito">
         <div class="cajaCarrito">
             <i class="fas fa-trash"></i>
