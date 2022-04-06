@@ -8,6 +8,7 @@ $valor = null;
 $configuracion_inicio = ControladorConfiguracion::ctrConfiguracionInicio($item, $valor);
 
 
+
 ?>
 <!-- inicio de la seccion home -->
 <section class="inicio mostrar" id="inicio">

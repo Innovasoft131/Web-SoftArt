@@ -2,9 +2,8 @@
 
 Options All -Indexes
 
-# crear URL Amigables
+# Url Amigables
+
 RewriteEngine On
 
-
-
-RewriteRule ^([-a-zA-Z0-9/]+)$ index.php?ruta=$1
+RewriteRule ^([-a-zA-Z0-9ñÑ_/]+)$ index.php?ruta=$1

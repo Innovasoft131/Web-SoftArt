@@ -57,7 +57,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     $ruta = null;
     $ruta1 = null;
  
-    
+   
     if(isset($_GET["ruta"]) && $_GET["ruta"] == "login"){
         include 'modulos/login.php';
     }elseif($_GET["ruta"] && $_GET["ruta"] == "olvidoPassword"){
