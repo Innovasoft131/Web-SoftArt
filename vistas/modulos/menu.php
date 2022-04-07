@@ -4,6 +4,7 @@ $valor = null;
 $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($item, $valor);
 $rutaWeb =  Ruta::ctrRutaWeb();
 $rutaAdmin =  Ruta::ctrRutaAdmin();
+  
 ?>
 <!-- inicio del header -->
 <header class="header mostrar">
@@ -26,10 +27,21 @@ $rutaAdmin =  Ruta::ctrRutaAdmin();
             <i class="fas fa-shopping-cart"></i>
         </div>
         <!-- id="btnLogin" -->
-        <div class="subIcono btnLoginI" >
-             <i class="fas fa-user"></i>
-            
-        </div>
+           
+             <?php if($_SESSION['validarSesion'] == "ok"): ?>
+                <div class="subIcono">
+                <span id="btnUsuario"><?php echo $_SESSION['usuario']; ?></span>
+                </div>
+               
+               
+             <?php else: ?>
+                <div class="subIcono btnLoginI" >
+                   <i class="fas fa-user"></i>
+                </div>
+
+                <?php endif; ?>
+
+        
     </div>
     <form action="" method="post" class="formBuscar">
         <input type="search" id="txtBuscar" placeholder="Buscar aqui.....">
@@ -80,12 +92,13 @@ $rutaAdmin =  Ruta::ctrRutaAdmin();
         <a href="#" class="btn">Comprar</a>
     </div>
     <form action="" class="login-form">
-        <h3>Inicia sesión</h3>
-        <input type="email" placeholder="correo" class="cajaLogin">
-        <input type="password" placeholder="Contraseña" class="cajaLogin">
-        <p>Olvidaste tu contraseña <a href="#">Has click aquí</a></p>
-        <p>No tengo una cuenta <a href="#">Crear cuenta</a></p>
-        <input type="submit" value="Iniciar" class="btn">
+        <h3>Hola <?php echo $_SESSION['usuario']?></h3>
+        <ul class="cajaLogin">
+            <li ><a href="perfil">Informacion Personal</a></li>
+        </ul>
+        <a href="salir">
+        <input type="submit" value="Salir" class="btn">
+        </a>
     </form>
 </header>
 <!-- fin del header -->

@@ -20,15 +20,15 @@ document.querySelector("#btnCarrito").onclick = () => {
 
 
 let login = document.querySelector(".login-form");
-/*
-document.querySelector("#btnLogin").onclick = () => {
+
+document.querySelector("#btnUsuario").onclick = () => {
     login.classList.toggle('activar');
     carrito.classList.remove('activar');
     buscarForm.classList.remove('activar');
     menu.classList.remove('activar');   
     
 };
-*/
+
 
 let menu = document.querySelector(".nav");
 

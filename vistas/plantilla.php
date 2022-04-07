@@ -3,7 +3,7 @@ header('Content-Type: text/html; charset=UTF-8');
 // mantener la ruta fija de la ecommerce
 $rutaWeb =  Ruta::ctrRutaWeb();
 $rutaAdmin =  Ruta::ctrRutaAdmin();
-
+session_start();
 $item = null;
 $valor = null;
 $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($item, $valor);

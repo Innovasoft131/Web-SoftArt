@@ -59,6 +59,7 @@ function testApi(){
 				contentType: false,
 				processData: false,
 				success: function(respuesta){
+					console.log("res",respuesta);
 				 if (respuesta == "ok") {
 					 window.location = "inicio";
 				 }else{

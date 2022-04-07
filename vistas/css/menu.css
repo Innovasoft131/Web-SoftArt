@@ -198,7 +198,7 @@
 }
 
 .header .login-form h3{
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
     color: var(--negro);
 }
@@ -220,26 +220,9 @@
     color: var(--gris);
 }
 
-.header .login-form a{
+.header .login-form a:hover{
     color: var(--naranja);
-    text-decoration: underline;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* media queries */
 

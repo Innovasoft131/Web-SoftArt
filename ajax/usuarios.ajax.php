@@ -21,7 +21,8 @@
 							"usuario"=>$this->usuario,
 					        "password"=>"null",
 					        "modo"=>"facebook",
-					        "verificacion"=>0);
+					        "verificacion"=>0,
+                  "correoencriptado"=>"null");
 
 		  $respuesta = ControladorUsuarios::ctrRegistroRedesSociales($datos);
 
