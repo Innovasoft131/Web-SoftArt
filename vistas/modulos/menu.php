@@ -31,14 +31,13 @@ $rutaAdmin =  Ruta::ctrRutaAdmin();
              <?php if( isset($_SESSION['validarSesion']) && $_SESSION['validarSesion'] == "ok"): ?>
                 <div class="subIcono">
                 <span id="btnUsuario"><?php echo $_SESSION['usuario']; ?></span>
-                </div>
-               
-               
+                </div>       
              <?php else: ?>
+                <a href="login">
                 <div class="subIcono btnLoginI" >
                    <i class="fas fa-user"></i>
                 </div>
-
+                </a>
                 <?php endif; ?>
 
         
@@ -97,7 +96,7 @@ $rutaAdmin =  Ruta::ctrRutaAdmin();
             <li ><a href="perfil">Informacion Personal</a></li>
         </ul>
         <a href="salir">
-        <input type="submit" value="Salir" class="btn">
+        <input type="button" value="Salir" class="btn">
         </a>
     </form>
 </header>

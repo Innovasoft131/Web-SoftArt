@@ -1,7 +1,9 @@
 <?php
 session_destroy();
 
+$url = Ruta::ctrRutaWeb();
+
 echo '<script>
-	    window.location = "inicio";
+        window.location = "'.$url.'";
       </script>';
 ?>

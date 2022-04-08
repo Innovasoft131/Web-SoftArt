@@ -252,45 +252,45 @@
 
 					            $mail->Subject = "Por favor verifique su dirección de correo electrónico";
 
-				             	$mail->addAddress('$_POST["correoRecuperar"]');
+				             	$mail->addAddress($_POST["correoRecuperar"]);
 
 					            $mail->msgHTML('<div style="width:100%; background:#eee; position:relative; font-family:sans-serif; padding-bottom:40px">
-						
-						            <center>
-							
-							           <img style="padding:20px; width:10%" src="http://tutorialesatualcance.com/tienda/logo.png">
+	
+								<center>
+									
+									<img style="padding:20px; width:10%" src="">
 
-						            </center>
+								</center>
 
-						             <div style="position:relative; margin:auto; width:600px; background:white; padding:20px">
-						
-							        <center>
-							
-							          <img style="padding:20px; width:15%" src="https://png.pngtree.com/png-vector/20190826/ourlarge/pngtree-email-png-image_1697542.jpg">
+								<div style="position:relative; margin:auto; width:600px; background:white; padding:20px">
+								
+									<center>
+									
+									<img style="padding:20px; width:15%" src="https://png.pngtree.com/png-vector/20190826/ourlarge/pngtree-email-png-image_1697542.jpg">
 
-							          <h3 style="font-weight:100; color:#999">VERIFIQUE SU DIRECCIÓN DE CORREO ELECTRÓNICO</h3>
+									<h3 style="font-weight:100; color:#999">SOLICITUD DE NUEVA CONTRASEÑA</h3>
 
-							          <hr style="border:1px solid #ccc; width:80%">
+									<hr style="border:1px solid #ccc; width:80%">
 
-							          <h4 style="font-weight:100; color:#999; padding:0 20px">Para comenzar a usar su cuenta de Tienda Virtual, debe confirmar su dirección de correo electrónico</h4>
+									<h4 style="font-weight:100; color:#999; padding:0 20px"><strong>Su nueva contraseña: </strong>'.$nuevaPassword.'</h4>
 
-							          <a href="'.$url.'verificar/'.$encriptarEmail.'" target="_blank" style="text-decoration:none">
+									<a href="'.$url.'" target="_blank" style="text-decoration:none">
 
-							          <div style="line-height:60px; background:#0aa; width:60%; color:white">Verifique su dirección de correo electrónico</div>
+									<div style="line-height:60px; background:#0aa; width:60%; color:white">Ingrese nuevamente al sitio</div>
 
-							          </a>
+									</a>
 
-						            	<br>
+									<br>
 
-							        <hr style="border:1px solid #ccc; width:80%">
+									<hr style="border:1px solid #ccc; width:80%">
 
-							        <h5 style="font-weight:100; color:#999">Si no se inscribió en esta cuenta, puede ignorar este correo electrónico y la cuenta se eliminará.</h5>
+									<h5 style="font-weight:100; color:#999">Si no se inscribió en esta cuenta, puede ignorar este correo electrónico y la cuenta se eliminará.</h5>
 
-							    </center>
+									</center>
 
-						</div>
+								</div>
 
-					</div>');
+							</div>');
 
 					$envio = $mail->Send();
 

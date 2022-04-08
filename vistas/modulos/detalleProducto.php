@@ -9,7 +9,10 @@
     $producto = ControladorProductos::ctrMostrarProducto($item, $valor);
    
   ?>
-
+  <!--BOTON DE WHATSAPP FLOTANTE-->
+    <a href="https://api.whatsapp.com/send?phone=4775875940" class="btn-wsp" target="_blank">
+        <i class="fas fas-whastapp"></i>
+    </a>
    <div class="card-wrapper">
      <div class="card-detail">
        <!-- card left -->

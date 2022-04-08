@@ -37,12 +37,12 @@
 
 .header .iconos_menu .subIcono{
     height: 4.5rem;
-    width: 4.5rem;
+    width: 6rem;
     line-height: 4.5rem;
     border-radius: .5rem;
    /* background: #eee; */
     color: var(--negro);
-    font-size: 2rem;
+    font-size: 1.6rem;
     margin-right: .3rem;
     cursor: pointer;
     text-align: center ;       
