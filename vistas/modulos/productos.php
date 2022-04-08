@@ -111,15 +111,15 @@ $ruta = $rutas[0];
           <div class="imgBx">
             <img src="<?php echo $rutaAdmin . $value["foto"]; ?>" alt="">
             <ul class="accion">
-              <li>
+              <li class="detalle" nombre="<?php echo $value["id"]; ?>" producto="<?php echo $value["id"]; ?>" modelo="<?php echo $value["nombre"]; ?>" precio="<?php echo $value["precio_venta"]; ?>" oferta="<?php echo $value["oferta_venta"]; ?>" imagen="<?php echo $rutaAdmin . $value["foto"]; ?>">
                 <i class="fa fa-heart"></i>
                 <span>Comprar</span>
               </li>
-              <li>
+              <li class="agregarCarrito" idproducto="<?php echo $value["id"]; ?>" producto="<?php echo $value["nombre"]; ?>" precio="<?php echo $value["precio_venta"]; ?>" oferta="<?php echo $value["oferta_venta"]; ?>" imagen="<?php echo $rutaAdmin . $value["foto"]; ?>">
                 <i class="fa fa-shopping-cart"></i>
                 <span>Agregar a carrito</span>
               </li>
-              <li>
+              <li class="detalle" nombre="<?php echo $value["id"]; ?>">
                 <i class="fa fa-eye"></i>
                 <span>Ver</span>
               </li>
@@ -129,16 +129,23 @@ $ruta = $rutas[0];
             <div class="nombreProducto">
               <h3><?php echo $value["nombre"]; ?></h3>
             </div>
-            <!-- div class="precio_calificacion">
-                <h2>$13.45</h2>
-                <div class="calificacion">
-                    <i class="fa fa-star imgEstrella"></i>
-                    <i class="fa fa-star imgEstrella"></i>
-                    <i class="fa fa-star imgEstrella gris"></i>
-                    <i class="fa fa-star imgEstrella gris"></i>
-                    <i class="fa fa-star imgEstrella gris"></i>
-                </div>
-            </div -->
+            <div class="precio_calificacion">
+              <?php if ($value["oferta_venta"] != "" || $value["oferta_venta"] != null) : ?>
+                <h2>$<?php echo $value["oferta_venta"]; ?></h2>
+              <?php else : ?>
+                <h2>$<?php echo $value["precio_venta"]; ?></h2>
+              <?php endif; ?>
+              <div class="calificacion">
+                <?php if ($value["oferta_venta"] != "" || $value["oferta_venta"] != null) : ?>
+                  <h2 class="oferta">$<?php echo $value["precio_venta"]; ?></h2>
+                <?php endif; ?>
+                <!-- i class="fa fa-star imgEstrella"></i>
+                <i class="fa fa-star imgEstrella"></i>
+                <i class="fa fa-star imgEstrella gris"></i>
+                <i class="fa fa-star imgEstrella gris"></i>
+                <i class="fa fa-star imgEstrella gris"></i -->
+              </div>
+            </div>
           </div>
         </div>
       <?php endforeach; ?>
@@ -159,17 +166,16 @@ $ruta = $rutas[0];
       isset($rutas[1]) && preg_match('/^[0-9]+$/', $rutas[1]) &&
       isset($rutas[2]) && preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚ0-9-ñÑ]+$/', $rutas[2]) &&
       isset($rutas[3]) && preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚ0-9-ñÑ]+$/', $rutas[3])
-    ){
+    ) {
       $link = '/' . $rutas[2] . '/' . $rutas[3];
-    }elseif (
+    } elseif (
       isset($rutas[2]) && preg_match('/^[0-9]+$/', $rutas[2]) &&
       isset($rutas[3]) && preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚ0-9-ñÑ]+$/', $rutas[3])
     ) {
       $link = '/' . $rutas[2] . '/' . $rutas[3];
-    
-    }elseif (isset($rutas[2]) && preg_match('/^[0-9]+$/', $rutas[2]) ) {
+    } elseif (isset($rutas[2]) && preg_match('/^[0-9]+$/', $rutas[2])) {
       $link = '/' . $rutas[2];
-    }else{
+    } else {
       $link = '';
     }
     if (count($listaProductos) != 0) :
@@ -182,7 +188,7 @@ $ruta = $rutas[0];
             <?php
             for ($i = 1; $i <= 4; $i++) :
             ?>
-              <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . $i.$link; ?>">
+              <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . $i . $link; ?>">
                 <li> <?php echo $i; ?> </li>
               </a>
             <?php
@@ -191,10 +197,10 @@ $ruta = $rutas[0];
             <a disabled>
               <li>...</li>
             </a>
-            <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . $pagiProductos.$link; ?>">
+            <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . $pagiProductos . $link; ?>">
               <li><?php echo $pagiProductos; ?></li>
             </a>
-            <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . '2'.$link; ?>">
+            <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . '2' . $link; ?>">
               <li>></li>
             </a>
           </ul>
@@ -205,14 +211,14 @@ $ruta = $rutas[0];
           $numPagActual = $rutas[1];
         ?>
           <ul>
-            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . ($numPagActual - 1).$link; ?>">
+            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . ($numPagActual - 1) . $link; ?>">
               <li>
                 < </li>
             </a>
             <?php
             for ($i = $numPagActual; $i <= ($numPagActual + 3); $i++) :
             ?>
-              <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . $i.$link; ?>">
+              <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . $i . $link; ?>">
                 <li> <?php echo $i; ?> </li>
               </a>
             <?php
@@ -221,10 +227,10 @@ $ruta = $rutas[0];
             <a disabled>
               <li>...</li>
             </a>
-            <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . $pagiProductos.$link; ?>">
+            <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . $pagiProductos . $link; ?>">
               <li><?php echo $pagiProductos; ?></li>
             </a>
-            <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . ($numPagActual + 1).$link; ?>">
+            <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . ($numPagActual + 1) . $link; ?>">
               <li>></li>
             </a>
           </ul>
@@ -234,11 +240,11 @@ $ruta = $rutas[0];
           $numPagActual = $rutas[1];
         ?>
           <ul>
-            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . ($numPagActual - 1).$link; ?>">
+            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . ($numPagActual - 1) . $link; ?>">
               <li>
                 < </li>
             </a>
-            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . '1'.$link; ?>">
+            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . '1' . $link; ?>">
               <li>1</li>
             </a>
             <a disabled>
@@ -247,13 +253,13 @@ $ruta = $rutas[0];
             <?php
             for ($i = $numPagActual; $i <= ($numPagActual + 3); $i++) :
             ?>
-              <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . $i.$link; ?>">
+              <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . $i . $link; ?>">
                 <li> <?php echo $i; ?> </li>
               </a>
             <?php
             endfor;
             ?>
-            <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . ($numPagActual + 1).$link; ?>">
+            <a href="<?php echo $rutaWeb .  $rutas[0] . '/' . ($numPagActual + 1) . $link; ?>">
               <li>></li>
             </a>
 
@@ -264,11 +270,11 @@ $ruta = $rutas[0];
           $numPagActual = $rutas[1];
         ?>
           <ul>
-            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . ($numPagActual - 1).$link; ?>">
+            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . ($numPagActual - 1) . $link; ?>">
               <li>
                 < </li>
             </a>
-            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . '1'.$link; ?>">
+            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . '1' . $link; ?>">
               <li>1</li>
             </a>
             <a disabled>
@@ -277,7 +283,7 @@ $ruta = $rutas[0];
             <?php
             for ($i = ($pagiProductos - 3); $i <= $pagiProductos; $i++) :
             ?>
-              <a href="<?php echo $rutaWeb . $rutas[0] . '/' . $i.$link; ?>">
+              <a href="<?php echo $rutaWeb . $rutas[0] . '/' . $i . $link; ?>">
                 <li> <?php echo $i; ?> </li>
               </a>
             <?php
@@ -320,7 +326,7 @@ $ruta = $rutas[0];
           <?php
           for ($i = 1; $i <= $pagiProductos; $i++) :
           ?>
-            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . $i.$link; ?>">
+            <a href="<?php echo $rutaWeb . $rutas[0] . '/' . $i . $link; ?>">
               <li> <?php echo $i; ?> </li>
             </a>
           <?php

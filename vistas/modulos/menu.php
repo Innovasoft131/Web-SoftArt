@@ -28,7 +28,7 @@ $rutaAdmin =  Ruta::ctrRutaAdmin();
         </div>
         <!-- id="btnLogin" -->
            
-             <?php if($_SESSION['validarSesion'] == "ok"): ?>
+             <?php if( isset($_SESSION['validarSesion']) && $_SESSION['validarSesion'] == "ok"): ?>
                 <div class="subIcono">
                 <span id="btnUsuario"><?php echo $_SESSION['usuario']; ?></span>
                 </div>

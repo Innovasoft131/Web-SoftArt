@@ -104,3 +104,12 @@ $tamanioParrafo = $configuracion_inicio[0]["tamanioParrafo"];
     font-size: <?php echo $tamanioParrafo; ?>rem;
 }
 
+.tableCart th{
+
+background: <?php echo $colorCorporativo; ?>;
+
+}
+
+.total-price table{
+border-top: 3px solid <?php echo $colorCorporativo; ?>;
+}

@@ -33,6 +33,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/loader.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/detalleProducto.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/olvidoPassword.css">
+    <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/carrito.css">
 
 
     <script src="<?php echo $rutaWeb; ?>vistas/dist/jquery/jquery.min.js"></script>
@@ -105,12 +106,15 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
             include "modulos/productos.php";
         } elseif ($ruta1 != null || $rutas[0] == "detalleProducto") {
             include "modulos/detalleProducto.php";
+        }elseif ($ruta1 != null || $rutas[0] == "carrito-de-compras") {
+            include "modulos/carrito-de-compras.php";
         }  elseif ($rutas[0] == "buscador" || $rutas[0] == "verificar" || $rutas[0] == "salir" || $rutas[0] == "perfil") {
             include "modulos/" . $rutas[0] . ".php";
         } elseif ($rutas[0] == "inicio") {
             include 'modulos/inicio.php';
         } else {
         //    include "modulos/error404.php";
+
         }
         include 'modulos/pie.php';
     }else {
@@ -134,6 +138,8 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <script src="<?php echo $rutaWeb; ?>vistas/js/loader.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/registroFacebook.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/usuarios.js"></script>
+    <script src="<?php echo $rutaWeb; ?>vistas/js/productos.js"></script>
+    <script src="<?php echo $rutaWeb; ?>vistas/js/carrito.js"></script>
     
 
     <script>

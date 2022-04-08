@@ -11,16 +11,27 @@ document.querySelector("#btnBuscar").onclick = () => {
 let carrito = document.querySelector(".carrito");
 
 document.querySelector("#btnCarrito").onclick = () => {
+    /*
     carrito.classList.toggle('activar');
     login.classList.remove('activar');
     buscarForm.classList.remove('activar');
-    menu.classList.remove('activar');   
+    menu.classList.remove('activar'); 
+    */
+    const ruta = document.getElementById("rutaOculta").value; 
+    window.location = ruta+"carrito-de-compras";
     
 };
 
 
 let login = document.querySelector(".login-form");
 
+$(document).on("click", "#btnUsuario", function(){
+    login.classList.toggle('activar');
+    carrito.classList.remove('activar');
+    buscarForm.classList.remove('activar');
+    menu.classList.remove('activar');   
+});
+/*
 document.querySelector("#btnUsuario").onclick = () => {
     login.classList.toggle('activar');
     carrito.classList.remove('activar');
@@ -28,6 +39,7 @@ document.querySelector("#btnUsuario").onclick = () => {
     menu.classList.remove('activar');   
     
 };
+*/
 
 
 let menu = document.querySelector(".nav");

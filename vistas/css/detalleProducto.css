@@ -11,7 +11,7 @@ body{
 .card-wrapper{
     max-width: 1100px;
     margin: 0 auto;
-    margin-top: 230px;
+    margin-top: 152px;
 }
 img{
     width: 100%;
@@ -179,8 +179,49 @@ img{
     color: #fff;
 }
 
+.btnAgregarCarrito{
+    margin-top: 25px;
+    width: 100%;
+    background-color: white;
+    border: 2px solid #3b5998;
+    color: blue;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    
+    font-size: 16px;
+    transition-duration: 0.4s;
+}
+
+.btnAgregarCarrito:hover{
+    cursor: pointer;
+    background-color: #3b5998;
+    color: white;
+}
+
+.btnPagarPayPal{
+    margin-top: 25px;
+    width: 100%;
+    background-color: white;
+    border: 2px solid #032f86;
+    color: #032f86;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    
+    font-size: 16px;
+    transition-duration: 0.4s;
+}
+
+.btnPagarPayPal:hover{
+    cursor: pointer;
+    border: 2px solid #009ddf;
+    background-color: #009ddf;
+    color: white;
+}
+
 @media screen and (min-width: 992px){
-    .card{
+    .card-detail{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 1.5rem;
