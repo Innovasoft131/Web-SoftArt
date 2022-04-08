@@ -25,9 +25,9 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
       <div class="pie-col-4">
         <h3>Redes sociales</h3>
         <ul>
-          <li> <i class="fab fa-facebook"></i> Facebook</li>
-          <li> <i class="fab fa-twitter"></i> Twitter</li>
-          <li> <i class="fab fa-instagram"></i> Instagram</li>
+          <li> <i class="fa-brands fa-facebook"></i> Facebook</li>
+          <li> <i class="fa-brands fa-twitter"></i> Twitter</li>
+          <li> <i class="fab fa-instagram"></i>Instagram</li>
         </ul>
       </div>
     </div>

@@ -5,9 +5,9 @@ $rutaAdmin =  Ruta::ctrRutaAdmin();
 $ruta = $rutas[0];
 ?>
 <!-- PRODUCTS -->
-    <a href="https://api.whatsapp.com/send?phone=4775875940" class="btn-wsp" target="_blank">
-        <i class="fas fas-whastapp"></i>
-    </a>
+<a href="https://api.whatsapp.com/send?phone=4775875940" class="btn-wsp" target="_blank">
+  <i class="fa-solid fa-comment"></i>
+</a>
 <section class="section products sectionProducto mostrar">
   <div class="products-layout container">
     <div class="col-1-of-4">
