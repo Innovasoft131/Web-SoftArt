@@ -9,7 +9,7 @@
                $respuesta = ControladorUsuarios::ctrMostrarUsuario("correo", $datos);
                echo json_encode($respuesta);
             }
-
+ 
           //Registro con facebook
           public $correo;
 	      public $nombre;
@@ -18,7 +18,7 @@
 
 	      	$datos = array("nombre"=>$this->nombre,
 					        "correo"=>$this->correo,
-							"usuario"=>$this->usuario,
+						    	"usuario"=>$this->usuario,
 					        "password"=>"null",
 					        "modo"=>"facebook",
 					        "verificacion"=>0,

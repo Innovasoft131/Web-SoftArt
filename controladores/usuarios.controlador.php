@@ -414,5 +414,14 @@
 		  }
 		}
 	  }
+	  public function ctrPedidosUsuarios($item, $valor){
+		
+		$tabla = "pedidos";
+        
+		$respuesta = ModeloUsuarios::mdlMostrarPedidos($tabla, $item, $valor);
+       
+		return $respuesta;
+
+	  }
 	}
 ?>

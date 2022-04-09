@@ -30,7 +30,7 @@ class ModeloUsuarios{
 	=============================================*/
 
 	static public function mdlMostrarUsuario($tabla, $item, $valor){
-   
+
 		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
 
 		$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
@@ -38,6 +38,24 @@ class ModeloUsuarios{
 		$stmt -> execute();
 
 		return $stmt -> fetch();
+
+		$stmt-> close();
+
+		$stmt = null;
+
+	}
+	 /*=============================================
+	MOSTRAR PEDIDOS USUARIOS
+	=============================================*/
+
+	static public function mdlMostrarPedidos($tabla, $item, $valor){
+      
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = $valor");
+
+
+		$stmt -> execute();
+
+		return $stmt -> fetchAll();
 
 		$stmt-> close();
 

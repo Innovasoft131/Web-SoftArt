@@ -21,6 +21,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/dist/owlCarousel/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/dist/owlCarousel/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/dist/swiper-bundle/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/dist/datatable/datatables.min.css">
 
 
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/plantilla.css">
@@ -34,6 +35,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/detalleProducto.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/olvidoPassword.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/carrito.css">
+    <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/perfil.css">
 
 
     <script src="<?php echo $rutaWeb; ?>vistas/dist/jquery/jquery.min.js"></script>
@@ -42,6 +44,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <script src="<?php echo $rutaWeb; ?>vistas/dist/fontawesome/js/solid.min.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/dist/swiper-bundle/js/swiper-bundle.min.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/dist/sweetalert2/sweetalert2.all.js"></script>
+    <script src="<?php echo $rutaWeb; ?>vistas/dist/datatable/datatables.js"></script>
 
 
 </head>
@@ -140,6 +143,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <script src="<?php echo $rutaWeb; ?>vistas/js/usuarios.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/productos.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/carrito.js"></script>
+    <script src="<?php echo $rutaWeb; ?>vistas/js/perfil.js"></script>
     
 
     <script>

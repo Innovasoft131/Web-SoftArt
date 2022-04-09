@@ -1,4 +1,3 @@
-
 <section class="login mostrar">
   <div class="contenedor">
       <!-- login -->
@@ -22,9 +21,9 @@
                     <a href="olvidoPassword" class="olvidoContrasena">Olvidaste tu contraseña?</a>
                 </center>
                 <button id="buttonFacebook">Continuar con Facebook</button>
-               <!-- <a href="<?php echo $rutaGoogle;?>">
-                <button id="buttonGmail">Entrar con Gmail</button>
-                </a>-->
+                <!--<a href="<?php echo $rutaGoogle;?>">
+                <button id="buttonGmail">Entrar con Gmail</button>-->
+                </a>
             </div>
             
         </div>
