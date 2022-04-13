@@ -20,7 +20,7 @@ $('#correoCliente').change(function(){
         contentType: false,
         processData: false,
         success: function(respuesta){
-            console.log("respuesta", respuesta);
+        
             if (respuesta == "false") {
                 $(".correoExist").remove();
                 validarCorreoRepetido = false;
@@ -35,10 +35,10 @@ $('#correoCliente').change(function(){
 function registroUsuarios(){
     //validar nombre
      var nombre = $("#nombreCliente").val();
-     console.log(nombre);
+    
     if (nombre != "") {
         var expresion = /^[a-zA-ZñÑáéíóú ]*$/;
-        console.log(expresion.test(nombre));
+      
         if (!expresion.test(nombre)) {
             $('#nombreCliente').after("<div class='correoExist'>Nombre sin numero y/o caracteres alfanumericos</div>");
               return false;
@@ -56,7 +56,7 @@ function registroUsuarios(){
     
    if (correo != "") {
        var expresionCorreo = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-       console.log(expresionCorreo.test(correo));
+      
        if (!expresionCorreo.test(correo)) {
            Swal.fire({
                icon: 'error',

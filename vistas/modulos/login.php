@@ -10,13 +10,16 @@
                     <input type="password" placeholder="Contraseña" autocomplete="on" name="ingPassword">
                     <input type="submit" value="Entrar">
                     <p class="signup">¿No tienes cuenta? <a href="#" onclick="toggleForm();" class="btnIngreso">Crear Cuenta</a></p>
-                   
+                    <br>
+                   <center>
+                <div class="g-recaptcha" data-sitekey="6Ld8BW0fAAAAABtl7xBjfSHIJzFGSlpUye8QZKNO"></div>
+                    </center> 
                     <?php
                          $ingreso = new ControladorUsuarios();
                          $ingreso->ctrIngresoUsuario();
                     ?>
                 </form>
-                <br>
+                
                 <center>
                     <a href="olvidoPassword" class="olvidoContrasena">Olvidaste tu contraseña?</a>
                 </center>
@@ -39,6 +42,7 @@
                     <input type="password" placeholder="Confirmar contraseña" autocomplete="on" name="confirmarPasswor" id="confirmarPasswor" required>
                     <input type="submit" id="btnEntrar" value="Crear">
                     <p class="signup">¿tienes cuenta? <a href="#" onclick="toggleForm();" >Iniciar sesión</a></p>
+
                     <?php
                      $registro = new ControladorUsuarios();
                      $registro->ctrRegistroUsuario();

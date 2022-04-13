@@ -31,13 +31,13 @@
 							$url = Ruta::ctrRutaWeb();	
 							$mail->SMTPDebug = SMTP::DEBUG_SERVER;                     
 							$mail->isSMTP();                                          
-							$mail->Host       = 'smtp.gmail.com';                    
+							$mail->Host       = 'euro-latina.com.mx';                    
 							$mail->SMTPAuth   = true;                              
-							$mail->Username   = 'juan.cisneros3546@gmail.com';                
-							$mail->Password   = 'juan.3546'; 
-							$mail->SMTPSecure = 'tls';                 
-							$mail->Port       = 587;   
-							$mail->setFrom('juan.cisneros3546@gmail.com', 'el juanjo');
+							$mail->Username   = 'softart@euro-latina.com.mx';                
+							$mail->Password   = 'softart_2022'; 
+							$mail->SMTPSecure = 'ssl';                 
+							$mail->Port       = 465;   
+							$mail->setFrom('softart@euro-latina.com.mx', 'SoftArt');
 							$mail->Subject="Por favor verifique su direccion de correro electronico SoftArt";
 							$mail->addAddress($_POST['correoCliente']);
 							 
@@ -53,7 +53,7 @@
 									<h3 style="font-weight:100; color:#999">VERIFIQUE SU DIRECCIÓN DE CORREO ELECTRÓNICO</h3>
 									<hr style="border:1px solid #ccc; width:80%">
 									<h4 style="font-weight:100; color:#999; padding:0 20px">Para comenzar a usar su cuenta en SoftArt, debe confirmar su dirección de correo electrónico</h4>
-									<a href="'.$url.'verificar/'.$correoEncrip.'" target="_blank" style="text-decoration:none">
+									<a href="'.$url.'/verificar/'.$correoEncrip.'" target="_blank" style="text-decoration:none">
 									<div style="line-height:60px; background:#0aa; width:60%; color:white">Verifique su dirección de correo electrónico</div>
 									</a>
 									<br>
@@ -160,7 +160,17 @@
 								}
 								</script>";
 						}else{
-							
+					
+							if (isset($_POST['g-recaptcha-response'])) {
+							 $secret="6Ld8BW0fAAAAADe2gJNV1Vyz9qs24xzBxDgfeKXh";
+							 $response=$_POST['g-recaptcha-response'];
+							 $remoteip = $_SERVER['REMOTE_ADDR'];
+							 $result = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoreip");
+							 $array = json_decode($result, true);
+
+							 if ($array['success']) {
+							 
+
 							$_SESSION['validarSesion'] = "ok";
 							$_SESSION['id'] = $respuesta['id'];
 							$_SESSION['nombre'] = $respuesta['nombre'];
@@ -173,7 +183,23 @@
 							
 							 window.location='inicio';
 							</script>";
-						
+							}
+						  }
+						  else{
+                echo "<script>
+					Swal.fire({
+						icon: 'error',
+						title: 'Oops...',
+						text: 'Error al ingresar, debe comprobar que no es un robot!',
+					  }),
+					  function(isConfirm){
+						  if(isConfirm){
+							history.back();
+						  }
+					  }
+					</script>";
+
+						  }
 						}
 					}else{
 						echo "<script>
@@ -199,7 +225,7 @@
 	      Reestablecer Contraseña
 	     =============================================*/
 
-		 public function ctrOlvidoPassword(){
+		public function ctrOlvidoPassword(){
 			if (isset($_POST['correoRecuperar'])) {
 				
 				if (preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/', $_POST['correoRecuperar'])){
@@ -215,12 +241,12 @@
 						   }
 						   return $key;
 					   }
-					$nuevaPassword = generarPassword(11);
-					$encryptar = crypt($nuevaPassword, '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-					$tabla = "clientes";
-					$item1= "correo";
-					$valor1= $_POST['correoRecuperar'];
-				    $respuesta1 = ModeloUsuarios::mdlMostrarUsuario($tabla, $item1, $valor1);
+							$nuevaPassword = generarPassword(11);
+							$encryptar = crypt($nuevaPassword, '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+							$tabla = "clientes";
+							$item1= "correo";
+							$valor1= $_POST['correoRecuperar'];
+							$respuesta1 = ModeloUsuarios::mdlMostrarUsuario($tabla, $item1, $valor1);
 					
 					if ($respuesta1) {
 						$id = $respuesta1['id'];
@@ -235,69 +261,63 @@
 							//$encriptar = crypt($_POST["regPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 							$mail = new PHPMailer(true);
 					              //Server settings
-								$url = Ruta::ctrRutaWeb();	
-								$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-								$mail->isSMTP();                                            //Send using SMTP
-								$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-								$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-								$mail->Username   = 'juan.cisneros3546@gmail.com';                     //SMTP username
-								$mail->Password   = 'juan.3546'; 
-								$mail->SMTPSecure = 'tls';                              //SMTP password
-								          //Enable implicit TLS encryption
-								$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-								//Recipients
-								$mail->setFrom('juan.cisneros3546@gmail.com', 'Juanjo');
-								//$mail->addAddress('juan.cisneros3546@gmail.com');     //Add a recipient
-
-					            $mail->Subject = "Por favor verifique su dirección de correo electrónico";
-
-				             	$mail->addAddress($_POST["correoRecuperar"]);
-
-					            $mail->msgHTML('<div style="width:100%; background:#eee; position:relative; font-family:sans-serif; padding-bottom:40px">
+							$url = Ruta::ctrRutaWeb();	
+							$mail->SMTPDebug = SMTP::DEBUG_SERVER;                     
+							$mail->isSMTP();                                          
+							$mail->Host       = 'euro-latina.com.mx';                    
+							$mail->SMTPAuth   = true;                              
+							$mail->Username   = 'softart@euro-latina.com.mx';                
+							$mail->Password   = 'softart_2022'; 
+							$mail->SMTPSecure = 'ssl';                 
+							$mail->Port       = 465;   
+							$mail->setFrom('softart@euro-latina.com.mx', 'SoftArt');
+							$mail->Subject = "Por favor verifique su direccion de correo electronico";
+                     $mail->addAddress($_POST["correoRecuperar"]);
+                     $mail->msgHTML('
+								<div style="width:100%; background:#eee; position:relative; font-family:sans-serif; padding-bottom:40px">
 	
-								<center>
+								  <center>
 									
 									<img style="padding:20px; width:10%" src="">
 
-								</center>
+								  </center>
 
-								<div style="position:relative; margin:auto; width:600px; background:white; padding:20px">
+								  <div style="position:relative; margin:auto; width:600px; background:white; padding:20px">
 								
-									<center>
+									 <center>
 									
-									<img style="padding:20px; width:15%" src="https://png.pngtree.com/png-vector/20190826/ourlarge/pngtree-email-png-image_1697542.jpg">
+									   <img style="padding:20px; width:15%" src="https://png.pngtree.com/png-vector/20190826/ourlarge/pngtree-email-png-image_1697542.jpg">
 
-									<h3 style="font-weight:100; color:#999">SOLICITUD DE NUEVA CONTRASEÑA</h3>
+									   <h3 style="font-weight:100; color:#999">SOLICITUD DE NUEVA CONTRASEÑA</h3>
 
-									<hr style="border:1px solid #ccc; width:80%">
+									    <hr style="border:1px solid #ccc; width:80%">
 
-									<h4 style="font-weight:100; color:#999; padding:0 20px"><strong>Su nueva contraseña: </strong>'.$nuevaPassword.'</h4>
+									    <h4 style="font-weight:100; color:#999; padding:0 20px"><strong>Su nueva contraseña: </strong>'.$nuevaPassword.'</h4>
 
-									<a href="'.$url.'" target="_blank" style="text-decoration:none">
+									   <a href="'.$url.'" target="_blank" style="text-decoration:none">
 
-									<div style="line-height:60px; background:#0aa; width:60%; color:white">Ingrese nuevamente al sitio</div>
+									    <div style="line-height:60px; background:#0aa; width:60%; color:white">Ingrese nuevamente al sitio</div>
 
-									</a>
+									      </a>
 
-									<br>
+									      <br>
+  
+									     <hr style="border:1px solid #ccc; width:80%">
 
-									<hr style="border:1px solid #ccc; width:80%">
+									      <h5 style="font-weight:100; color:#999">Si no se inscribió en esta cuenta, puede ignorar este correo electrónico y la cuenta se eliminará.</h5>
 
-									<h5 style="font-weight:100; color:#999">Si no se inscribió en esta cuenta, puede ignorar este correo electrónico y la cuenta se eliminará.</h5>
+									      </center>
 
-									</center>
+								    </div>
 
-								</div>
+							      </div>');
 
-							</div>');
+					               // $envio = $mail->Send();
+                
 
-					$envio = $mail->Send();
+					                if(!$mail->Send()){
 
-
-					if(!$envio){
-
-						echo '<script> 
+						               echo '<script> 
 
 							swal({
 								  title: "¡ERROR!",
@@ -322,7 +342,7 @@
 
 							swal({
 								  title: "¡OK!",
-								  text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["regEmail"].' para verificar la cuenta!",
+								  text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["correoRecuperar"].' para verificar la cuenta!",
 								  type:"success",
 								  confirmButtonText: "Cerrar",
 								  closeOnConfirm: false
@@ -331,7 +351,7 @@
 								function(isConfirm){
 
 									if(isConfirm){
-										history.back();
+										window.location= "login";
 									}
 							});
 

@@ -95,7 +95,7 @@ $rutaAdmin =  Ruta::ctrRutaAdmin();
         <ul class="cajaLogin">
             <li ><a href="perfil">Informacion Personal</a></li>
         </ul>
-        <a href="salir">
+        <a href="salir" id="salirSession">
         <input type="button" value="Salir" class="btn">
         </a>
     </form>

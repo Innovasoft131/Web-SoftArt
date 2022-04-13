@@ -13,6 +13,7 @@ $configuracion_inicio = ControladorConfiguracion::ctrConfiguracionInicio($item, 
     <a href="https://api.whatsapp.com/send?phone=4775875940" class="btn-wsp" target="_blank">
         <i class="fas fas-whastapp"></i>
     </a>
+
 <section class="inicio mostrar" id="inicio">
     <div class="contenido">
         <h3><span><?php echo $configuracion_inicio[0]["slogan"]; ?></span> </h3>
@@ -56,6 +57,7 @@ $configuracion_inicio = ControladorConfiguracion::ctrConfiguracionInicio($item, 
                     </p>
                 </div>
             </div>
+        
             <div class="column">
                 <div class="card_servicios">
                     <div class="icon-wrapper">

@@ -75,7 +75,6 @@ ul.tabs li a .tab-text{
     padding: 15px;
     width: 100%;
     line-height: 30px;
-    display: block;
     font-size: 18px;
     border-bottom: 1px solid burlywood;
 }
@@ -86,4 +85,11 @@ ul.tabs li a .tab-text{
 #table_id{
     width: 100%;
     text-align: center;
+}
+.input-wrapper{
+	position: relative;
+}
+.labels{
+	font-size: 13px;
+	margin-top: 20px;
 }

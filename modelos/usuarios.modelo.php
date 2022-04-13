@@ -73,7 +73,7 @@ class ModeloUsuarios{
 
 		$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
-		var_dump($stmt -> execute());
+		
 		if($stmt -> execute()){
 
 			return "ok";

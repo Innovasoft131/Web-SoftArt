@@ -45,6 +45,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <script src="<?php echo $rutaWeb; ?>vistas/dist/swiper-bundle/js/swiper-bundle.min.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/dist/sweetalert2/sweetalert2.all.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/dist/datatable/datatables.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
 </head>

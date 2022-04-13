@@ -6,11 +6,14 @@
     
 		<div class="secciones">
 			<article id="tab1">
-                <div>
-                <input type="text" class="inputs_perfil" placeholder="Nombre" value="<?php echo $_SESSION['nombre'] ?>">
-                <input type="text" class="inputs_perfil" placeholder="Usuario" value="<?php echo $_SESSION['usuario'] ?>">
-                <input type="text" class="inputs_perfil" placeholder="Correo" value="<?php echo $_SESSION['email'] ?>">
-                <input type="text" class="inputs_perfil" placeholder="Modo" value="<?php echo $_SESSION['modo'] ?>">
+                <label for="nombre" class="labels">Nombre</label><br>
+	            <input type="text" id="nombre" class="inputs_perfil" placeholder="Nombre" value="<?php echo $_SESSION['nombre'] ?>">
+                <label for="usuario" class="labels">Usuario</label><br>
+                <input type="text" id="usuario" class="inputs_perfil" placeholder="Usuario" value="<?php echo $_SESSION['usuario'] ?>">
+                <label for="correo" class="labels">Correo</label><br>
+                <input type="text" id="correo" class="inputs_perfil" placeholder="Correo" value="<?php echo $_SESSION['email'] ?>">
+                <label for="modo" class="labels">Modo</label><br>
+                <input type="text" id="modo" class="inputs_perfil" placeholder="Modo" value="<?php echo $_SESSION['modo'] ?>" readonly>
 			</article>
 			<article id="tab2">
             <table id="table_id" class="display">
