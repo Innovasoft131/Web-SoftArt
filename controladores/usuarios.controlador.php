@@ -161,16 +161,16 @@
 								</script>";
 						}else{
 					
-							if (isset($_POST['g-recaptcha-response'])) {
-							 $secret="6Ld8BW0fAAAAADe2gJNV1Vyz9qs24xzBxDgfeKXh";
-							 $response=$_POST['g-recaptcha-response'];
+					     
+							if (isset($_POST["g-recaptcha-response"])){
+							 $secret = "6Ld8BW0fAAAAADe2gJNV1Vyz9qs24xzBxDgfeKXh";
+							 $response = $_POST['g-recaptcha-response'];
 							 $remoteip = $_SERVER['REMOTE_ADDR'];
-							 $result = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoreip");
-							 $array = json_decode($result, true);
-
-							 if ($array['success']) {
+                      $result = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip");
+							 $array = json_decode($result, TRUE);
+                     
+							 if ($array['success']){
 							 
-
 							$_SESSION['validarSesion'] = "ok";
 							$_SESSION['id'] = $respuesta['id'];
 							$_SESSION['nombre'] = $respuesta['nombre'];
@@ -180,24 +180,23 @@
 							$_SESSION['modo'] = $respuesta['modo'];
 
 							echo "<script>
-							
-							 window.location='inicio';
-							</script>";
+							        window.location='inicio';
+							      </script>";
 							}
 						  }
 						  else{
-                echo "<script>
-					Swal.fire({
-						icon: 'error',
-						title: 'Oops...',
-						text: 'Error al ingresar, debe comprobar que no es un robot!',
-					  }),
-					  function(isConfirm){
-						  if(isConfirm){
-							history.back();
-						  }
-					  }
-					</script>";
+                     echo "<script>
+					         Swal.fire({
+						         icon: 'error',
+					         	title: 'Oops...',
+						         text: 'Error al ingresar, debe comprobar que no es un robot!',
+					          }),
+					         function(isConfirm){
+						         if(isConfirm){
+							        history.back();
+						         }
+					         }
+					        </script>";
 
 						  }
 						}
@@ -271,7 +270,7 @@
 							$mail->SMTPSecure = 'ssl';                 
 							$mail->Port       = 465;   
 							$mail->setFrom('softart@euro-latina.com.mx', 'SoftArt');
-							$mail->Subject = "Por favor verifique su direccion de correo electronico";
+							$mail->Subject = "Solicitud de contraseña nueva";
                      $mail->addAddress($_POST["correoRecuperar"]);
                      $mail->msgHTML('
 								<div style="width:100%; background:#eee; position:relative; font-family:sans-serif; padding-bottom:40px">
@@ -312,50 +311,47 @@
 
 							      </div>');
 
-					               // $envio = $mail->Send();
+					             $sendf =$mail->Send();
                 
+                         
+					                if(!$sendf){
 
-					                if(!$mail->Send()){
+						           echo "<script>
+					                      Swal.fire({
+						                    icon: 'error',
+						                    title: 'Oops...',
+						                    text: '¡Ha ocurrido un problema enviando el mensaje!',
+					                     }),
+					                     function(isConfirm){
+						                    if(isConfirm){
+							                   history.back();
+						                     }
+					                     }
+					                    </script>";
 
-						               echo '<script> 
+					                 }else{
 
-							swal({
-								  title: "¡ERROR!",
-								  text: "¡Ha ocurrido un problema enviando verificación de correo electrónico a '.$_POST["correoRecuperar"].$mail->ErrorInfo.'!",
-								  type:"error",
-								  confirmButtonText: "Cerrar",
-								  closeOnConfirm: false
-								},
+						echo '<script>
 
-								function(isConfirm){
-
-									if(isConfirm){
-										history.back();
-									}
+							Swal.fire({
+		
+								icon: "success",
+								text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["correoRecuperar"].' para su cambio de contraseña!",
+								showConfirmButton: true,
+								confirmButtonText: "Cerrar"
+		
+							}).then(function(result){
+		
+								if(result.value){
+								
+									window.location = "login";
+		
+								}
+		
 							});
-
-						</script>';
-
-					}else{
-
-						echo '<script> 
-
-							swal({
-								  title: "¡OK!",
-								  text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["correoRecuperar"].' para verificar la cuenta!",
-								  type:"success",
-								  confirmButtonText: "Cerrar",
-								  closeOnConfirm: false
-								},
-
-								function(isConfirm){
-
-									if(isConfirm){
-										window.location= "login";
-									}
-							});
-
-						</script>';
+						
+		
+							</script>';
 
 					}
 				}

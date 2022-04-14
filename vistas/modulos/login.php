@@ -6,8 +6,8 @@
             <div class="formBx">
                 <form method="post">
                     <h2>Iniciar sesión</h2>
-                    <input type="text" placeholder="Correo Electronico" name="ingCorreo">
-                    <input type="password" placeholder="Contraseña" autocomplete="on" name="ingPassword">
+                    <input type="text" placeholder="Correo Electronico" name="ingCorreo" required>
+                    <input type="password" placeholder="Contraseña" autocomplete="on" name="ingPassword" required>
                     <input type="submit" value="Entrar">
                     <p class="signup">¿No tienes cuenta? <a href="#" onclick="toggleForm();" class="btnIngreso">Crear Cuenta</a></p>
                     <br>

@@ -6,7 +6,7 @@
     $id= $respuesta['id'];
     $item2= "verificacion";
     $valor2= 0;
-
+    $ruta = Ruta::ctrRutaWeb();
     $respuesta2 = ControladorUsuarios::ctrActualizarCliente($id,$item2,$valor2);
 
     $usuarioVerificado = false;
@@ -17,14 +17,13 @@
 
       
 
-
     if ($usuarioVerificado) {
         echo "<div class='divcontener'>
         <h3 class='gracias'>Gracias</h3>
-        <h2 ><center><small class='hemosVerifi'>Hemos verificado su correo electronico, ya puede ingresar al sistema!</small></center></h2>
+        <h2 ><center><small class='hemosVerifi'>Se verifico su correo electronico, ya puede ingresar al sistema!</small></center></h2>
         <br>
         <center>
-        <a href='login'><button id='buttonIngresarConfirm'>Ingresar</button </a>
+        <a href='".$ruta."/login'><button id='buttonIngresarConfirm'>Ingresar</button </a>
         </center>
         </div>
         <br>
@@ -35,7 +34,7 @@
         echo "<h3>Gracias</h3>
         <h2><small>No se pudo verificar correo electronico, vuelva a registrarse el el sistema!</small></h2>
         <br>
-        <a href='login'<button>Ingresar</button </a>";
+        <a href='".$ruta."/login'><button>Ingresar</button </a>";
     }
 
 ?>
