@@ -170,8 +170,8 @@ class ControladorUsuarios
 								</script>";
 					} else {
 
-                    var_dump($_POST["g-recaptcha-response"]);
-						if (isset($_POST["g-recaptcha-response"])) {
+                    //var_dump($_POST["g-recaptcha-response"]);
+					/*	if (isset($_POST["g-recaptcha-response"])) {
 							$secret = "6Ld8BW0fAAAAADe2gJNV1Vyz9qs24xzBxDgfeKXh";
 							$response = $_POST['g-recaptcha-response'];
 							$remoteip = $_SERVER['REMOTE_ADDR'];
@@ -179,7 +179,7 @@ class ControladorUsuarios
 							$array = json_decode($result, TRUE);
 
 							if ($array['success']) {
-
+                    */
 								$_SESSION['validarSesion'] = "ok";
 								$_SESSION['id'] = $respuesta['id'];
 								$_SESSION['nombre'] = $respuesta['nombre'];
@@ -191,7 +191,7 @@ class ControladorUsuarios
 								echo "<script>
 							        window.location='inicio';
 							      </script>";
-							}
+						/*	}
 						} else {
 							echo "<script>
 					         Swal.fire({
@@ -205,7 +205,7 @@ class ControladorUsuarios
 						         }
 					         }
 					        </script>";
-						}
+						}*/
 					}
 				} else {
 					echo "<script>
@@ -265,7 +265,7 @@ class ControladorUsuarios
 						/*=============================================
 					            VERIFICACIÓN CORREO ELECTRÓNICO
 					        =============================================*/
-						//$encriptar = crypt($_POST["regPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+					
 						$mail = new PHPMailer();
 						//Server settings
 						$url = Ruta::ctrRutaWeb();

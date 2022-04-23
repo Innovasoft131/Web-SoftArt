@@ -2,7 +2,7 @@
 
 class Ruta{
     public function ctrRutaWeb(){
-       // return "http://localhost:8080/Web-SoftArt/";
+        //return "http://localhost:8080/Web-SoftArt/";
         //return "http://localhost/Web-SoftArt/Web-SoftArt/";
         return "https://softart.euro-latina.com.mx/";
     }

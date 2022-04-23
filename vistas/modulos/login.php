@@ -12,7 +12,7 @@
                     <p class="signup">¿No tienes cuenta? <a href="#" onclick="toggleForm();" class="btnIngreso">Crear Cuenta</a></p>
                     <br>
                    <center>
-                <div class="g-recaptcha" data-sitekey="6Ld8BW0fAAAAABtl7xBjfSHIJzFGSlpUye8QZKNO"></div>
+                <!--<div class="g-recaptcha" data-sitekey="6Ld8BW0fAAAAABtl7xBjfSHIJzFGSlpUye8QZKNO"></div>-->
                     </center> 
                     <?php
                          $ingreso = new ControladorUsuarios();
@@ -23,7 +23,7 @@
                 <center>
                     <a href="olvidoPassword" class="olvidoContrasena">Olvidaste tu contraseña?</a>
                 </center>
-                <button id="buttonFacebook">Continuar con Facebook</button>
+                <!--<button id="buttonFacebook">Continuar con Facebook</button>-->
                 <!--<a href="<?php echo $rutaGoogle;?>">
                 <button id="buttonGmail">Entrar con Gmail</button>-->
                 </a>

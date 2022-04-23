@@ -19,7 +19,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
       <div class="pie-col-3">
         <h3>Enlaces útiles</h3>
         <ul>
-          <li> <i class="fas fa-undo-alt"></i> política de devoluciones</li>
+        <a href="https://www.iubenda.com/privacy-policy/63066360" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Política de Privacidad ">Política de Privacidad</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
         </ul>
       </div>
       <div class="pie-col-4">
