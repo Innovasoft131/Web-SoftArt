@@ -24,7 +24,7 @@ if (localStorage.getItem("listaProductos") != null) {
             ' </div>' +
             '</div>' +
             '</td>' +
-            '<td><input type="number" class="cantidadCarrito" min="1" name="cantidadCarrito" id="cantidadCarrito" idProducto="' + item.idProducto + '"  precio="' + precio + '" value="' + item.cantidad + '"></td>' +
+            '<td><input type="number" class="cantidadCarrito" min="1" name="cantidadCarritos" id="cantidadCarrito" idProducto="' + item.idProducto + '"  precio="' + precio + '" value="' + item.cantidad + '"></td>' +
             '<td class="subtotal' + item.idProducto + '"><h4>$<span class="preciaProducto">'+(item.cantidad*precio)+'</span>.00</h4></td>' +
             '</tr>';
 
@@ -279,3 +279,21 @@ function sumaTotal(){
     $(".totalPedido").html('$'+sumatotal+".00");
     
 }
+
+
+$(document).on("click", "#btnCheckout", function(){
+    var idUsuario = $(this).attr("idUsuario");
+    var titulo = $(".mostrarCarrito .productoCarrito");
+    var cantidad = $(".mostrarCarrito .cantidadCarrito");
+    var subtotal = $(".preciaProducto");
+
+    for (let i = 0; i < titulo.length; i++) {
+        var tituloArray = $(titulo[i]).html();
+        console.log("tituloArray", tituloArray);
+        var cantidadArray = $(cantidad[i]).val();
+        console.log("cantidadArray", cantidadArray);
+        var subtotalArray = $(subtotal[i]).html();
+        console.log("subtotalArray", subtotalArray);
+        
+    }
+});

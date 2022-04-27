@@ -180,6 +180,7 @@ class ControladorUsuarios
 
 							if ($array['success']) {
                     */
+								session_start();
 								$_SESSION['validarSesion'] = "ok";
 								$_SESSION['id'] = $respuesta['id'];
 								$_SESSION['nombre'] = $respuesta['nombre'];

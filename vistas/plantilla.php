@@ -36,6 +36,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/olvidoPassword.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/carrito.css">
     <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/perfil.css">
+    <link rel="stylesheet" href="<?php echo $rutaWeb; ?>vistas/css/checkout.css">
 
 
     <script src="<?php echo $rutaWeb; ?>vistas/dist/jquery/jquery.min.js"></script>
@@ -46,6 +47,8 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <script src="<?php echo $rutaWeb; ?>vistas/dist/sweetalert2/sweetalert2.all.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/dist/datatable/datatables.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- paypal --> 
+    <script src="https://www.paypal.com/sdk/js?client-id=AX9s3FldPIEaXb9kSRmO-Z1CwxTMIdSfa8Ih2R_zQlpmxWSd5xjzr75nmfUx4qejJ17cPWd8YvGSyQYS&currency=MXN"></script>
 
 
 </head>
@@ -112,7 +115,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
             include "modulos/detalleProducto.php";
         }elseif ($ruta1 != null || $rutas[0] == "carrito-de-compras") {
             include "modulos/carrito-de-compras.php";
-        }  elseif ($rutas[0] == "buscador" || $rutas[0] == "verificar" || $rutas[0] == "salir" || $rutas[0] == "perfil") {
+        }  elseif ($rutas[0] == "buscador" || $rutas[0] == "verificar" || $rutas[0] == "salir" || $rutas[0] == "perfil" || $rutas[0] == "checkout") {
             include "modulos/" . $rutas[0] . ".php";
         } elseif ($rutas[0] == "inicio") {
             include 'modulos/inicio.php';
@@ -134,6 +137,8 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
 
     ?>
     <input type="hidden" value="<?php echo $rutaWeb; ?>" id="rutaOculta">
+    <input type="hidden" value="<?php echo $_SESSION["id"]; ?>" id="cliente">
+    <input type="hidden" value="<?php echo $_SESSION["usuario"]; ?>" id="usuario">
 
     <script src="<?php echo $rutaWeb; ?>vistas/js/detalleProducto.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/menu.js"></script>
@@ -145,6 +150,7 @@ $configuracion_ecommerce = ControladorConfiguracion::ctrConfiguracionGlobal($ite
     <script src="<?php echo $rutaWeb; ?>vistas/js/productos.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/carrito.js"></script>
     <script src="<?php echo $rutaWeb; ?>vistas/js/perfil.js"></script>
+    <script src="<?php echo $rutaWeb; ?>vistas/js/checkout.js"></script>
     
 
     <script>

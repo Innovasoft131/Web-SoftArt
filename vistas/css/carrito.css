@@ -3,6 +3,8 @@
     margin-top: 180px;
     padding-top: 56px;
     margin: 80px auto;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 .tableCart{
@@ -68,5 +70,11 @@ th:last-child{
 @media only screen and (max-width: 600px) {
     .cart-info p{
         display: none;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .cart-page{
+        padding-top: 191px;
     }
 }

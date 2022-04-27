@@ -82,8 +82,7 @@ if (isset($ruta)) :
           <button type="button" class="btnAgregarCarrito agregarCarrito" idproducto="<?php echo $producto[0]["id"]; ?>" producto="<?php echo $producto[0]["nombre"]; ?>" precio="<?php echo $producto[0]["precio_venta"]; ?>" oferta="<?php echo $producto[0]["oferta_venta"]; ?>" imagen="<?php echo $rutaAdmin . $producto[0]["foto"]; ?>">
             Agregar al carrito
           </button>
-          <button type="button" class="btnPagarPayPal">Comprar con PayPal </button>
-          <button type="button" class="btnPagarPayPal">Comprar con Tarjeta / oxxo </button>
+          <button type="button" class="btn-checkout">Realizar Pago </button>
         </div>
 
         <!-- div class="social-links">
