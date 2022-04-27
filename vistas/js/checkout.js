@@ -43,6 +43,7 @@ function sumaTotalCheckout() {
   }
 
   var sumatotal = arraySumaSubtotales.reduce(sumaArrayTotales);
+  localStorage.setItem("total", sumatotal);
 
   $(".totalCheckout").html('$<span>' + sumatotal + "</span>.00");
 
@@ -53,7 +54,7 @@ function sumaTotalCheckout() {
 mostrarCheckout();
 
 /* paypal */
-var totalApagar = $(".totalCheckout span").html();
+var totalApagar = JSON.parse(localStorage.getItem("total")); // $(".totalCheckout span").html();
 var rutaOculta = $("#rutaOculta").val();
 var datosCarrito = localStorage.getItem('listaProductos');
 var cliente = $("#cliente").val();

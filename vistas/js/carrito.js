@@ -2,34 +2,70 @@
 if (localStorage.getItem("listaProductos") != null) {
     var listaCarrito = JSON.parse(localStorage.getItem("listaProductos"));
     var html = '';
-   
+
     var precio = 0;
     listaCarrito.forEach(funcionMostrarProductos);
 
-    function funcionMostrarProductos(item, index) {
-        if (item.oferta != "") {
-            precio = item.oferta;
-        } else {
-            precio = item.precio;
-        }
-        html = '<tr>' +
-            ' <td>' +
-            ' <div class="cart-info">' +
-            ' <img class="img" src="' + item.imagen + '" alt="' + item.producto + '" >' +
-            '<div class="precioCarrito">' +
-            ' <p class="productoCarrito">' + item.producto + '</p>' +
-            '<small>Precio: $<span>' + precio + '</span>.00</small>' +
-            '<br>' +
-            '<a href="#" class="quitarItemCarrito" idProducto="' + item.idProducto + '"  precio="' + item.precio + '" oferta="' + item.oferta + '">Eliminar Articulo</a>' +
-            ' </div>' +
-            '</div>' +
-            '</td>' +
-            '<td><input type="number" class="cantidadCarrito" min="1" name="cantidadCarritos" id="cantidadCarrito" idProducto="' + item.idProducto + '"  precio="' + precio + '" value="' + item.cantidad + '"></td>' +
-            '<td class="subtotal' + item.idProducto + '"><h4>$<span class="preciaProducto">'+(item.cantidad*precio)+'</span>.00</h4></td>' +
-            '</tr>';
 
-        $(".mostrarCarrito").append(html);
-        
+    function funcionMostrarProductos(item, index) {
+        var datosProductos = new FormData();
+        datosProductos.append("id", item.idProducto);
+        const precioProducto = async () => {
+            const precioVenta = await fetch(
+                "ajax/productos.ajax.php",
+                {
+                    method: "POST",
+                    body: datosProductos
+                }
+            );
+
+            const precioBd = await precioVenta.json();
+            if (precioBd[0]["oferta_venta"] != "") {
+                precio = precioBd[0]["oferta_venta"];
+
+            } else {
+                precio = precioBd[0]["precio_venta"];
+            }
+
+            html = '<tr>' +
+                ' <td>' +
+                ' <div class="cart-info">' +
+                ' <img class="img" src="' + item.imagen + '" alt="' + item.producto + '" >' +
+                '<div class="precioCarrito">' +
+                ' <p class="productoCarrito">' + item.producto + '</p>' +
+                '<small>Precio: $<span>' + precio + '</span>.00</small>' +
+                '<br>' +
+                '<a href="#" class="quitarItemCarrito" idProducto="' + item.idProducto + '"  precio="' + precioBd[0]["precio_venta"] + '" oferta="' + precioBd[0]["oferta_venta"] + '">Eliminar Articulo</a>' +
+                ' </div>' +
+                '</div>' +
+                '</td>' +
+                '<td><input type="number" class="cantidadCarrito" min="1" name="cantidadCarritos" id="cantidadCarrito" idProducto="' + item.idProducto + '"  precio="' + precio + '" value="' + item.cantidad + '"></td>' +
+                '<td class="subtotal' + item.idProducto + '"><h4>$<span class="preciaProducto">' + (item.cantidad * precio) + '</span>.00</h4></td>' +
+                '</tr>';
+
+            $(".mostrarCarrito").append(html);
+            /* Actualizar subtotal */
+
+            var precioCarritoCompra = $(".mostrarCarrito .precioCarrito span");
+            var cantidadItem = $(".mostrarCarrito .cantidadCarrito");
+
+
+            for (let i = 0; i < precioCarritoCompra.length; i++) {
+                var precioCarritoArray = $(precioCarritoCompra[i]).html();
+                var cantidadItemArray = $(cantidadItem[i]).val();
+                var idProductoArray = $(cantidadItem[i]).attr("idProducto");
+
+
+                $(".subtotal" + idProductoArray).html('<h4>$<span class="preciaProducto">' + (precioCarritoArray * cantidadItemArray) + '</span>.00</h4>');
+                sumaTotal();
+            }
+
+        }
+
+        precioProducto();
+
+
+
     }
 } else {
 
@@ -75,7 +111,7 @@ $(document).on('click', '.agregarCarrito', function () {
 
     */
     if (localStorage.getItem("listaProductos") != null) {
-        
+
         var productos = JSON.parse(localStorage.getItem('listaProductos'));
         var arrayProductos = productos.filter((producto) => producto["idProducto"] == idProducto);
         if (arrayProductos.length >= 1) {
@@ -88,11 +124,11 @@ $(document).on('click', '.agregarCarrito', function () {
                 timer: 2500
             });
 
-        }else{
+        } else {
             agregarAlCarrito = true;
         }
 
-    }else{
+    } else {
         agregarAlCarrito = true;
     }
 
@@ -201,7 +237,7 @@ $(document).on("change", ".cantidadCarrito", function () {
     var precio = $(this).attr("precio");
     var idProducto = $(this).attr("idProducto");
 
-    $(".subtotal" + idProducto).html('<h4>$<span class="preciaProducto">'+(cantidad*precio)+'</span>.00</h4>');
+    $(".subtotal" + idProducto).html('<h4>$<span class="preciaProducto">' + (cantidad * precio) + '</span>.00</h4>');
     /* actualizar la cantidad en localStorage */
 
     var idProducto = $(".mostrarCarrito .quitarItemCarrito");
@@ -236,52 +272,38 @@ $(document).on("change", ".cantidadCarrito", function () {
 /* fin de seccion para sumar cantidades de producto del carrito */
 
 
-/* Actualizar subtotal */
 
-var precioCarritoCompra = $(".mostrarCarrito .precioCarrito span");
-var cantidadItem = $(".mostrarCarrito .cantidadCarrito"); 
-
-
-for (let i = 0; i < precioCarritoCompra.length; i++) {
-    var precioCarritoArray = $(precioCarritoCompra[i]).html();
-    var cantidadItemArray = $(cantidadItem[i]).val();
-    var idProductoArray = $(cantidadItem[i]).attr("idProducto");
-
-
-    $(".subtotal"+idProductoArray).html('<h4>$<span class="preciaProducto">'+(precioCarritoArray * cantidadItemArray)+'</span>.00</h4>');
-    sumaTotal();
-}
 
 /* Suma de todos los subtotales */
-function sumaTotal(){
-    
+function sumaTotal() {
+
     var idProducto = $(".quitarItemCarrito").attr("idProducto");
     var subtotales = $(".preciaProducto");
     var arraySumaSubtotales = [];
-   
+
     for (let i = 0; i < subtotales.length; i++) {
 
-        var sumatotalArray = $(subtotales[i]).html(); 
-        
+        var sumatotalArray = $(subtotales[i]).html();
+
         arraySumaSubtotales.push(Number(sumatotalArray));
     }
 
-   
 
-    function sumaArrayTotales(total, numero){
-        
+
+    function sumaArrayTotales(total, numero) {
+
         return total + numero;
     }
 
     var sumatotal = arraySumaSubtotales.reduce(sumaArrayTotales);
-    
 
-    $(".totalPedido").html('$'+sumatotal+".00");
-    
+
+    $(".totalPedido").html('$' + sumatotal + ".00");
+
 }
 
 
-$(document).on("click", "#btnCheckout", function(){
+$(document).on("click", "#btnCheckout", function () {
     var idUsuario = $(this).attr("idUsuario");
     var titulo = $(".mostrarCarrito .productoCarrito");
     var cantidad = $(".mostrarCarrito .cantidadCarrito");
@@ -294,6 +316,6 @@ $(document).on("click", "#btnCheckout", function(){
         console.log("cantidadArray", cantidadArray);
         var subtotalArray = $(subtotal[i]).html();
         console.log("subtotalArray", subtotalArray);
-        
+
     }
 });
